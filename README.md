@@ -11,7 +11,11 @@
 
 ### `delete`
 
-## Return
+## Return methods
+
+### success
+
+### error
 
 ## License
 
