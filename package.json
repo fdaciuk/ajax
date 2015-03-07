@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "chai": "^2.1.1",
+    "gulp": "^3.8.11",
+    "gulp-istanbul": "^0.6.0",
+    "gulp-load-plugins": "^0.8.1",
+    "gulp-mocha": "^2.0.0"
+  }
+}
