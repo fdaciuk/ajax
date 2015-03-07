@@ -13,9 +13,9 @@
 
 ## Return methods
 
-### success
+### `success`
 
-### error
+### `error`
 
 ## License
 
