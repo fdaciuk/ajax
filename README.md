@@ -19,4 +19,4 @@
 
 ## License
 
-[MIT](https://github.com/fdaciuk/ajax/blob/master/LICENSE) © Fernando Daciuk
+[MIT](https://github.com/fdaciuk/ajax/blob/master/LICENSE.md) © Fernando Daciuk
