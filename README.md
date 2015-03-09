@@ -13,7 +13,7 @@
 
 ## Return methods
 
-### `success`
+### `done`
 
 ### `error`
 
