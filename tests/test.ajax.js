@@ -20,5 +20,10 @@
       var ajax = new Ajax();
       ajax.should.have.property( 'get' );
     });
+
+    it( 'Should have `post` method', function() {
+      var ajax = new Ajax();
+      ajax.should.have.property( 'post' );
+    });
   });
 });

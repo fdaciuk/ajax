@@ -18,6 +18,7 @@
     var $private = {};
 
     $public.get = function get() {};
+    $public.post = function post() {};
 
     return $public;
   }
