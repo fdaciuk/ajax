@@ -25,5 +25,33 @@
       var ajax = new Ajax();
       ajax.should.have.property( 'post' );
     });
+
+    it( 'Should have `put` method', function() {
+      var ajax = new Ajax();
+      ajax.should.have.property( 'put' );
+    });
+
+    it( 'Should have `delete` method', function() {
+      var ajax = new Ajax();
+      ajax.should.have.property( 'delete' );
+    });
+
+    it( 'Should `get` method returns `done` method', function() {
+      var ajax = new Ajax();
+      var getRequest = ajax.get();
+      getRequest.should.have.property( 'done' );
+    });
+
+    it( 'Should `get` method returns `error` method', function() {
+      var ajax = new Ajax();
+      var getRequest = ajax.get();
+      getRequest.should.have.property( 'error' );
+    });
+
+    it( 'Should `post` method returns `done` method', function() {
+      var ajax = new Ajax();
+      var postRequest = ajax.post();
+      postRequest.should.have.property( 'done' );
+    });
   });
 });

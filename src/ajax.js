@@ -17,8 +17,23 @@
     var $public = {};
     var $private = {};
 
-    $public.get = function get() {};
-    $public.post = function post() {};
+    $public.get = function get() {
+      return $private.promises();
+    };
+
+    $public.post = function post() {
+      return $private.promises();
+    };
+
+    $public.put = function put() {};
+    $public.delete = function del() {};
+
+    $private.promises = function promises() {
+      return {
+        done: function done() {},
+        error: function error() {}
+      };
+    };
 
     return $public;
   }
