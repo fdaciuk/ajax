@@ -25,8 +25,12 @@
       return $private.promises();
     };
 
-    $public.put = function put() {};
-    $public.delete = function del() {};
+    $public.put = function put() {
+      return $private.promises();
+    };
+    $public.delete = function del() {
+      return $private.promises();
+    };
 
     $private.promises = function promises() {
       return {

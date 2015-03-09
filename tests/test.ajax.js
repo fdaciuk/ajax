@@ -53,5 +53,35 @@
       var postRequest = ajax.post();
       postRequest.should.have.property( 'done' );
     });
+
+    it( 'Should `post` method returns `error` method', function() {
+      var ajax = new Ajax();
+      var postRequest = ajax.post();
+      postRequest.should.have.property( 'error' );
+    });
+
+    it( 'Should `put` method returns `done` method', function() {
+      var ajax = new Ajax();
+      var putRequest = ajax.put();
+      putRequest.should.have.property( 'done' );
+    });
+
+    it( 'Should `put` method returns `error` method', function() {
+      var ajax = new Ajax();
+      var putRequest = ajax.put();
+      putRequest.should.have.property( 'error' );
+    });
+
+    it( 'Should `delete` method returns `done` method', function() {
+      var ajax = new Ajax();
+      var deleteRequest = ajax.delete();
+      deleteRequest.should.have.property( 'done' );
+    });
+
+    it( 'Should `delete` method returns `error` method', function() {
+      var ajax = new Ajax();
+      var deleteRequest = ajax.delete();
+      deleteRequest.should.have.property( 'error' );
+    });
   });
 });
