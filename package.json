@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "chai": "^2.1.1",
+    "connect": "^3.3.4",
+    "connect-route": "^0.1.5",
     "gulp": "^3.8.11",
     "gulp-istanbul": "^0.6.0",
     "gulp-load-plugins": "^0.8.1",

@@ -33,5 +33,6 @@ gulp.task( 'test', function( done ) {
 });
 
 gulp.task( 'default', [ 'assets' ], function() {
+  require( './api/app' );
   gulp.watch([ allTestFiles, 'src/ajax.js' ], [ 'test' ]);
 });
