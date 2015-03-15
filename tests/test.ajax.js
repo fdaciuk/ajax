@@ -2,9 +2,7 @@
   'use strict';
   /* istanbul ignore next */
   if ( typeof define === 'function' && define.amd ) {
-    define( function() {
-      require([ 'Ajax' ]);
-    });
+    define([ 'chai.should', 'Ajax' ], factory );
   }
   else if ( typeof exports === 'object' ) {
     exports = module.exports = factory( require( 'chai' ).should(), require( '../src/ajax' ) );
@@ -72,6 +70,17 @@
     it( 'Should `delete` method returns `error` method', function() {
       var deleteRequest = ajax.delete();
       deleteRequest.should.have.property( 'error' );
+    });
+  });
+
+  describe( 'Test `get` method', function() {
+    it( 'Should returns an object', function( done ) {
+      var ajax = new Ajax();
+      ajax.get( 'http://localhost:3000/api/users' ).done(function( response ) {
+        response.should.be.an( 'object' );
+        console.log( 'RESPONSE:', response );
+        done();
+      });
     });
   });
 });
