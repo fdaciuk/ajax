@@ -3,12 +3,18 @@
 var connect = require( 'connect' );
 var connectRoute = require( 'connect-route' );
 var app = connect();
+var PORT = 3000;
 
 var users = {
   joao: { name: 'João da Silva', age: 30 },
   maria: { name: 'Maria Firmina', age: 26 },
   paulo: { name: 'Paulo Torres', age: 25 }
 };
+
+app.use(function( req, res, next ) {
+  res.setHeader( 'Access-Control-Allow-Origin', '*' );
+  next();
+});
 
 app.use( connectRoute( function( router ) {
   function postRequest( req, res, next ) {
@@ -26,6 +32,7 @@ app.use( connectRoute( function( router ) {
   router.delete( '/api/user/:slug', postRequest );
 }));
 
-app.listen( 3000 );
+app.listen( PORT );
+console.log( 'Server listen on port ', PORT );
 
 exports = module.exports = app;
