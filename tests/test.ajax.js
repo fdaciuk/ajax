@@ -78,7 +78,6 @@
       var ajax = new Ajax();
       ajax.get( 'http://localhost:3000/api/users' ).done(function( response ) {
         response.should.be.an( 'object' );
-        console.log( 'RESPONSE:', response );
         done();
       });
     });

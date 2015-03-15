@@ -47,10 +47,21 @@
       var DONE = 4;
       if( xhr.readyState === DONE ) {
         if( xhr.status >= 200 && xhr.status < 300 ) {
-          return $private.methods.done.call( $private.methods, JSON.parse( xhr.responseText ) );
+          return $private.methods.done.call( $private.methods, $private.parseResponse( xhr.responseText ) );
         }
-        $private.methods.error.call( $private.methods, JSON.parse( xhr.responseText ) );
+        $private.methods.error.call( $private.methods, $private.parseResponse( xhr.responseText ) );
       }
+    };
+
+    $private.parseResponse = function parseResponse( response ) {
+      var result;
+      try {
+        result = JSON.parse( response );
+      }
+      catch( e ) {
+        result = response;
+      }
+      return result;
     };
 
     $private.promises = function promises() {
