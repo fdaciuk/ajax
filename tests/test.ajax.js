@@ -82,4 +82,14 @@
       });
     });
   });
+
+  describe( 'Test `post` method', function() {
+    it( 'Should returns an object', function( done ) {
+      var ajax = new Ajax();
+      ajax.post( 'http://localhost:3000/api/user/joao' ).done(function( response ) {
+        response.should.be.an( 'object' );
+        done();
+      });
+    });
+  });
 });
