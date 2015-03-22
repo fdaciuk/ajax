@@ -23,15 +23,11 @@
     };
 
     $public.get = function get( url ) {
-      var xhr = new XMLHttpRequest();
-      xhr.open( 'GET', url || '', true );
-      xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );
-      xhr.send();
-      return $private.promises();
+      return $private.XHRConnection( 'GET', url );
     };
 
-    $public.post = function post() {
-      return $private.promises();
+    $public.post = function post( url ) {
+      return $private.XHRConnection( 'POST', url );
     };
 
     $public.put = function put() {
@@ -39,6 +35,14 @@
     };
 
     $public.delete = function del() {
+      return $private.promises();
+    };
+
+    $private.XHRConnection = function XHRConnection( type, url ) {
+      var xhr = new XMLHttpRequest();
+      xhr.open( type, url || '', true );
+      xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );
+      xhr.send();
       return $private.promises();
     };
 
