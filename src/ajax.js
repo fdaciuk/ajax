@@ -26,8 +26,8 @@
       return $private.XHRConnection( 'GET', url );
     };
 
-    $public.post = function post( url ) {
-      return $private.XHRConnection( 'POST', url );
+    $public.post = function post( url, data ) {
+      return $private.XHRConnection( 'POST', url, data );
     };
 
     $public.put = function put() {
@@ -38,11 +38,12 @@
       return $private.promises();
     };
 
-    $private.XHRConnection = function XHRConnection( type, url ) {
+    $private.XHRConnection = function XHRConnection( type, url, data ) {
       var xhr = new XMLHttpRequest();
       xhr.open( type, url || '', true );
+      xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
       xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );
-      xhr.send();
+      xhr.send( data );
       return $private.promises();
     };
 

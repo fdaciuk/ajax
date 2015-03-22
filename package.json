@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "body-parser": "^1.12.2",
     "chai": "^2.1.1",
     "connect": "^3.3.4",
     "connect-route": "^0.1.5",

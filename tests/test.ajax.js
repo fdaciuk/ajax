@@ -32,49 +32,49 @@
       ajax.should.have.property( 'delete' );
     });
 
-    it( 'Should `get` method returns `done` method', function() {
+    it( 'Should `get` method return `done` method', function() {
       var getRequest = ajax.get();
       getRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `get` method returns `error` method', function() {
+    it( 'Should `get` method return `error` method', function() {
       var getRequest = ajax.get();
       getRequest.should.have.property( 'error' );
     });
 
-    it( 'Should `post` method returns `done` method', function() {
+    it( 'Should `post` method return `done` method', function() {
       var postRequest = ajax.post();
       postRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `post` method returns `error` method', function() {
+    it( 'Should `post` method return `error` method', function() {
       var postRequest = ajax.post();
       postRequest.should.have.property( 'error' );
     });
 
-    it( 'Should `put` method returns `done` method', function() {
+    it( 'Should `put` method return `done` method', function() {
       var putRequest = ajax.put();
       putRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `put` method returns `error` method', function() {
+    it( 'Should `put` method return `error` method', function() {
       var putRequest = ajax.put();
       putRequest.should.have.property( 'error' );
     });
 
-    it( 'Should `delete` method returns `done` method', function() {
+    it( 'Should `delete` method return `done` method', function() {
       var deleteRequest = ajax.delete();
       deleteRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `delete` method returns `error` method', function() {
+    it( 'Should `delete` method return `error` method', function() {
       var deleteRequest = ajax.delete();
       deleteRequest.should.have.property( 'error' );
     });
   });
 
   describe( 'Test `get` method', function() {
-    it( 'Should returns an object', function( done ) {
+    it( 'Should return an object', function( done ) {
       var ajax = new Ajax();
       ajax.get( 'http://localhost:3000/api/users' ).done(function( response ) {
         response.should.be.an( 'object' );
@@ -84,10 +84,19 @@
   });
 
   describe( 'Test `post` method', function() {
-    it( 'Should returns an object', function( done ) {
+    it( 'Should return an object', function( done ) {
       var ajax = new Ajax();
       ajax.post( 'http://localhost:3000/api/user/joao' ).done(function( response ) {
         response.should.be.an( 'object' );
+        done();
+      });
+    });
+
+    it( 'Should return data about `joao`', function( done ) {
+      var ajax = new Ajax();
+      ajax.post( 'http://localhost:3000/api/user', 'slug=joao' ).done(function( response ) {
+        console.log( response );
+        response.name.should.be.equal( 'João da Silva' );
         done();
       });
     });
