@@ -52,9 +52,9 @@
       var DONE = 4;
       if( xhr.readyState === DONE ) {
         if( xhr.status >= 200 && xhr.status < 300 ) {
-          return $private.methods.done.call( $private.methods, $private.parseResponse( xhr.responseText ) );
+          return $private.methods.done( $private.parseResponse( xhr.responseText ) );
         }
-        $private.methods.error.call( $private.methods, $private.parseResponse( xhr.responseText ) );
+        $private.methods.error( $private.parseResponse( xhr.responseText ) );
       }
     };
 
