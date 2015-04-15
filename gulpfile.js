@@ -13,20 +13,11 @@ gulp.task( 'assets', function() {
   .pipe( gulp.dest( 'public' ) );
 });
 
-gulp.task( 'mocha', function() {
-  gulp.src([ allTestFiles ], { read : false })
-  .pipe(
-    g.mocha({ reporter: 'list' })
-  );
-});
-
 gulp.task( 'test', function( done ) {
   gulp.src([ allTestFiles ])
     .pipe( g.istanbul() )
     .on( 'finish', function() {
-      gulp.src([ allTestFiles ])
-      .pipe( g.mocha() )
-      .on( 'error', done )
+      gulp.src([ 'src/ajax.js', allTestFiles ])
       .pipe( g.istanbul.writeReports() )
       .on( 'end', done );
     });

@@ -52,21 +52,24 @@
       var DONE = 4;
       if( xhr.readyState === DONE ) {
         if( xhr.status >= 200 && xhr.status < 300 ) {
-          return $private.methods.done( $private.parseResponse( xhr.responseText ) );
+          return $private.methods.done.apply( $private.methods, $private.parseResponse( xhr ) );
         }
-        $private.methods.error( $private.parseResponse( xhr.responseText ) );
+        $private.methods.error.apply( $private.methods, $private.parseResponse( xhr ) );
+      }
+      else {
+
       }
     };
 
-    $private.parseResponse = function parseResponse( response ) {
+    $private.parseResponse = function parseResponse( xhr ) {
       var result;
       try {
-        result = JSON.parse( response );
+        result = JSON.parse( xhr.responseText );
       }
       catch( e ) {
-        result = response;
+        result = xhr.responseText;
       }
-      return result;
+      return [ result, xhr ];
     };
 
     $private.promises = function promises() {
