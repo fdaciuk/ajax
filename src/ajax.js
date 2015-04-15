@@ -23,19 +23,19 @@
     };
 
     $public.get = function get( url ) {
-      return $private.XHRConnection( 'GET', url );
+      return $private.XHRConnection( 'GET', url, null );
     };
 
     $public.post = function post( url, data ) {
       return $private.XHRConnection( 'POST', url, data );
     };
 
-    $public.put = function put() {
-      return $private.promises();
+    $public.put = function put( url, data ) {
+      return $private.promises( 'PUT', url, data );
     };
 
-    $public.delete = function del() {
-      return $private.promises();
+    $public.delete = function del( url, data ) {
+      return $private.promises( 'DELETE', url, data );
     };
 
     $private.XHRConnection = function XHRConnection( type, url, data ) {
