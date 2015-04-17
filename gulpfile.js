@@ -2,6 +2,7 @@
 
 var gulp = require( 'gulp' );
 var g = require( 'gulp-load-plugins' )();
+var exec = require( 'child_process' ).exec;
 
 var allTestFiles = './tests/**/*.js';
 
@@ -21,6 +22,10 @@ gulp.task( 'test', function( done ) {
       .pipe( g.istanbul.writeReports() )
       .on( 'end', done );
     });
+});
+
+gulp.task( 'python', function() {
+  exec( 'python -m SimpleHTTPServer 9001' );
 });
 
 gulp.task( 'default', [ 'assets' ], function() {
