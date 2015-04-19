@@ -6,11 +6,7 @@ var bodyParser = require( 'body-parser' );
 var app = connect();
 var PORT = 3000;
 
-var users = {
-  joao: { name: 'João da Silva', age: 30 },
-  maria: { name: 'Maria Firmina', age: 26 },
-  paulo: { name: 'Paulo Torres', age: 25 }
-};
+var users = require( './data/users' );
 
 app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
