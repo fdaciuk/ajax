@@ -26,6 +26,7 @@ gulp.task( 'test', function( done ) {
 
 gulp.task( 'python', function() {
   exec( 'python -m SimpleHTTPServer 9001' );
+  console.log( 'Server listen on port 9001' );
 });
 
 gulp.task( 'default', [ 'assets' ], function() {
