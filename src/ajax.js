@@ -56,9 +56,6 @@
         }
         $private.methods.error.apply( $private.methods, $private.parseResponse( xhr ) );
       }
-      else {
-
-      }
     };
 
     $private.parseResponse = function parseResponse( xhr ) {
