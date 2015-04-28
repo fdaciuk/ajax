@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "gulp default python"
+  },
   "devDependencies": {
     "body-parser": "^1.12.2",
     "chai": "^2.1.1",
