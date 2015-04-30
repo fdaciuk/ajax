@@ -5,6 +5,11 @@
 
 ### `get`
 
+```js
+var ajax = new Ajax();
+ajax.get( '/api/users' );
+```
+
 ### `post`
 
 ### `put`
@@ -15,7 +20,21 @@
 
 ### `done`
 
+```js
+var ajax = new Ajax();
+ajax.get( '/api/users' ).done(function( response, xhr ) {
+  // Do anything
+});
+```
+
 ### `error`
+
+```js
+var ajax = new Ajax();
+ajax.get( '/api/users' ).error(function( response, xhr ) {
+  // Do anything
+});
+```
 
 ## License
 
