@@ -23,7 +23,7 @@ ajax.get( '/api/users' );
 ```js
 var ajax = new Ajax();
 ajax.get( '/api/users' ).done(function( response, xhr ) {
-  // Do anything
+  // Do something
 });
 ```
 
@@ -32,7 +32,7 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 ```js
 var ajax = new Ajax();
 ajax.get( '/api/users' ).error(function( response, xhr ) {
-  // Do anything
+  // Do something
 });
 ```
 
