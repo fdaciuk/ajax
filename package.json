@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "gulp default python"
+    "test": "gulp default python"
   },
   "devDependencies": {
     "body-parser": "^1.12.2",

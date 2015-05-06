@@ -83,7 +83,7 @@
     };
 
     $private.convertObjectToQueryString = function convertObjectToQueryString( data ) {
-      if( '[object Object]' !== Object.prototype.toString.call( data ) ) {
+      if( ! $private.isObject( data ) ) {
         return data;
       }
       var convertedData = [];
@@ -91,6 +91,10 @@
         convertedData.push( key + '=' + data[ key ] );
       });
       return convertedData.join( '&' );
+    };
+
+    $private.isObject = function isObject( data ) {
+      return '[object Object]' === Object.prototype.toString.call( data );
     };
 
     return $public;
