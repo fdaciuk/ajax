@@ -63,6 +63,10 @@ ajax.get( '/api/users' ).error(function( response, xhr ) {
 });
 ```
 
+## Contributing
+
+Check [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## License
 
 [MIT](https://github.com/fdaciuk/ajax/blob/master/LICENSE.md) © Fernando Daciuk
