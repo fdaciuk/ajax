@@ -18,7 +18,7 @@ ajax.get( '/api/users' );
 
 ```js
 var ajax = new Ajax();
-ajax.get( '/api/users', { data: 'value' });
+ajax.post( '/api/users', { data: 'value' });
 ```
 
 ### `put`
@@ -27,7 +27,7 @@ ajax.get( '/api/users', { data: 'value' });
 
 ```js
 var ajax = new Ajax();
-ajax.get( '/api/users', { slug: 'john' });
+ajax.put( '/api/users', { slug: 'john' });
 ```
 
 ### `delete`
@@ -36,7 +36,7 @@ ajax.get( '/api/users', { slug: 'john' });
 
 ```js
 var ajax = new Ajax();
-ajax.get( '/api/users', { id: 1 });
+ajax.delete( '/api/users', { id: 1 });
 ```
 
 ## Return methods
@@ -58,7 +58,7 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 
 ```js
 var ajax = new Ajax();
-ajax.get( '/api/users' ).error(function( response, xhr ) {
+ajax.post( '/api/users' ).error(function( response, xhr ) {
   // Do something
 });
 ```
