@@ -43,7 +43,7 @@
       xhr.open( type, url || '', true );
       xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
       xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );
-      xhr.send( data );
+      xhr.send( $private.convertObjectToQueryString( data ) );
       return $private.promises();
     };
 
@@ -80,6 +80,17 @@
           return this;
         }
       };
+    };
+
+    $private.convertObjectToQueryString = function convertObjectToQueryString( data ) {
+      if( '[object Object]' !== Object.prototype.toString.call( data ) ) {
+        return data;
+      }
+      var convertedData = [];
+      Object.keys( data ).forEach(function( key ) {
+        convertedData.push( key + '=' + data[ key ] );
+      });
+      return convertedData.join( '&' );
     };
 
     return $public;
