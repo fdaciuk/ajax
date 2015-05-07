@@ -3,7 +3,7 @@
 
 ## Methods
 
-### `get( url )`
+### `get(url)`
 
 > Get data as a JSON object.
 
@@ -12,7 +12,7 @@ var ajax = new Ajax();
 ajax.get( '/api/users' );
 ```
 
-### `post( url, [ data ] )`
+### `post(url, [ data ])`
 
 > Save a new register.
 
@@ -21,7 +21,7 @@ var ajax = new Ajax();
 ajax.post( '/api/users', { data: 'value' });
 ```
 
-### `put( url, [ data ] )`
+### `put(url, [ data ])`
 
 > Upgrade part of a register.
 
@@ -30,7 +30,7 @@ var ajax = new Ajax();
 ajax.put( '/api/users', { slug: 'john' });
 ```
 
-### `delete( url, [ data ] )`
+### `delete(url, [ data ])`
 
 > Delete a register.
 
@@ -41,7 +41,7 @@ ajax.delete( '/api/users', { id: 1 });
 
 ## Return methods
 
-### `done( response, xhrObject )`
+### `done(response, xhrObject)`
 
 > Promise that returns if the request was successful.
 
@@ -52,7 +52,7 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 });
 ```
 
-### `error( response, xhrObject )`
+### `error(response, xhrObject)`
 
 > Promise that returns if the request has an error.
 
