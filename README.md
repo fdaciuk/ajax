@@ -65,7 +65,7 @@ ajax.post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
 
 ## Contributing
 
-Check [CONTRIBUTING.md](CONTRIBUTING.md)
+Check <CONTRIBUTING.md>
 
 ## License
 
