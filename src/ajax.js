@@ -19,7 +19,8 @@
 
     $private.methods = {
       done: function() {},
-      error: function() {}
+      error: function() {},
+      always: function() {}
     };
 
     $public.get = function get( url ) {
@@ -51,6 +52,7 @@
       var xhr = this;
       var DONE = 4;
       if( xhr.readyState === DONE ) {
+        $private.methods.always.apply( $private.methods, $private.parseResponse( xhr ) );
         if( xhr.status >= 200 && xhr.status < 300 ) {
           return $private.methods.done.apply( $private.methods, $private.parseResponse( xhr ) );
         }
@@ -72,21 +74,21 @@
     $private.promises = function promises() {
       return {
         done: function done( callback ) {
-          $private.methods.done = callback;
-          return this;
+          return ( $private.methods.done = callback, this );
         },
         error: function error( callback ) {
-          $private.methods.error = callback;
-          return this;
+          return ( $private.methods.error = callback, this );
+        },
+        always: function always( callback ) {
+          return ( $private.methods.always = callback, this );
         }
       };
     };
 
     $private.convertObjectToQueryString = function convertObjectToQueryString( data ) {
-      if( ! $private.isObject( data ) ) {
-        return data;
-      }
       var convertedData = [];
+      if( ! $private.isObject( data ) )
+        return data;
       Object.keys( data ).forEach(function( key ) {
         convertedData.push( key + '=' + data[ key ] );
       });
