@@ -8,7 +8,7 @@
     exports = module.exports = factory( require( 'chai' ).should(), require( '../src/ajax' ) );
   }
   else {
-    root.Ajax = factory( root.chai.should(), root.Ajax );
+    root.testAjax = factory( root.chai.should(), root.Ajax );
   }
 })(this, function( should, Ajax ) {
   'use strict';
