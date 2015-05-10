@@ -63,6 +63,17 @@ ajax.post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
 });
 ```
 
+### `always(response, xhrObject)`
+
+> That promise always returns, independent if the status is `done` or `error`.
+
+```js
+var ajax = new Ajax();
+ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
+  // Do something
+});
+```
+
 ## Contributing
 
 Check [CONTRIBUTING.md](CONTRIBUTING.md)
