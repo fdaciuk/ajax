@@ -45,6 +45,6 @@ gulp.task( 'webserver', function() {
 
 gulp.task( 'travis', [ 'test' ] );
 
-gulp.task( 'default', [ 'assets' ], function() {
+gulp.task( 'default', [ 'assets', 'webserver', 'test' ], function() {
   gulp.watch( allFiles, [ 'test' ]);
 });

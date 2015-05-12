@@ -20,7 +20,7 @@ npm i
 Then, you can start the webserver and execute tests with the following command:
 
 ```sh
-npm watch
+gulp
 ```
 
 When you're ready, continue with next steps:

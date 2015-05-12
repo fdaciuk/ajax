@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "watch": "gulp default webserver",
     "test": "gulp travis"
   },
   "devDependencies": {
