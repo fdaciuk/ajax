@@ -32,7 +32,7 @@ gulp.task( 'test', [ 'coverage' ], function( done ) {
 });
 
 gulp.task( 'coverage', function( done ) {
-  return exec( 'istanbul cover _mocha tests/test.ajax.js', function( stdin, stdout, stderr ) {
+  return exec( 'istanbul cover _mocha tests/**/*.js -- --timeout 25600', function( stdin, stdout, stderr ) {
     done();
   });
 });
