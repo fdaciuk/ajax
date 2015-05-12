@@ -1,10 +1,31 @@
 # Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`;
-3. Write tests;
-4. Commit your changes: `git commit -m 'Add some feature'`;
-5. Push to the branch: `git push origin my-new-feature`
-6. Submit a pull request :D
+- Fork it!
+- Create your feature branch: `git checkout -b my-new-feature`;
 
-Enjoy ;)
+## Running
+
+You need to install `gulp` and `mocha` globaly:
+
+```sh
+[sudo] npm i -g gulp mocha
+```
+
+After that, you need to install local modules:
+
+```sh
+npm i
+```
+
+Then, you can start the webserver and execute tests with the following command:
+
+```sh
+npm watch
+```
+
+When you're ready, continue with next steps:
+
+- Write tests;
+- Commit your changes: `git commit -m 'Add some feature'`;
+- Push to the branch: `git push origin my-new-feature`
+- Submit a pull request :D
