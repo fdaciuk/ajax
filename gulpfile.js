@@ -37,12 +37,14 @@ gulp.task( 'coverage', function( done ) {
   });
 });
 
-gulp.task( 'python', function() {
+gulp.task( 'webserver', function() {
+  require( './api/app' );
   exec( 'python -m SimpleHTTPServer 9001' );
   console.log( 'Server listen on port 9001' );
 });
 
+gulp.task( 'travis', [ 'test' ] );
+
 gulp.task( 'default', [ 'assets' ], function() {
-  require( './api/app' );
   gulp.watch( allFiles, [ 'test' ]);
 });
