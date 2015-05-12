@@ -5,10 +5,10 @@
 
 ## Running
 
-You need to install `gulp` and `mocha` globaly:
+You need to install `gulp`, `mocha` and `istanbul` globally:
 
 ```sh
-[sudo] npm i -g gulp mocha
+[sudo] npm i -g gulp mocha istanbul
 ```
 
 After that, you need to install local modules:
