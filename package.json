@@ -7,14 +7,12 @@
     "chai": "^2.1.1",
     "connect": "^3.3.4",
     "connect-route": "^0.1.5",
-    "coveralls": "^2.11.2",
     "gulp": "^3.8.11",
     "gulp-istanbul": "^0.6.0",
     "gulp-istanbul-report": "0.0.1",
     "gulp-load-plugins": "^0.8.1",
     "gulp-mocha": "^2.0.0",
     "gulp-mocha-phantomjs": "^0.6.1",
-    "mocha-lcov-reporter": "0.0.2",
     "mocha-phantomjs-istanbul": "0.0.2"
   }
 }
