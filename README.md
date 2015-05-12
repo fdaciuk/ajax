@@ -6,6 +6,7 @@
 [![Code Climate Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 [![License][license-image]][license-url]
+[![CONTRIBUTING][contributing-image]][contributing-url]
 
 ## Methods
 
@@ -82,7 +83,7 @@ ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
 
 ## Contributing
 
-Check [CONTRIBUTING.md](CONTRIBUTING.md)
+Check [CONTRIBUTING.md][contributing-url]
 
 ## License
 
@@ -98,3 +99,5 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 [codeclimate-url]: https://codeclimate.com/github/fdaciuk/ajax
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
+[contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg?style=flat-square
+[contributing-url]: CONTRIBUTING.md
