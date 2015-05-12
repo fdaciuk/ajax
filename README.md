@@ -96,5 +96,5 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 [codeclimate-coverage-url]: https://codeclimate.com/github/fdaciuk/ajax
 [codeclimate-image]: https://img.shields.io/codeclimate/github/fdaciuk/ajax.svg?style=flat-square
 [codeclimate-url]: https://codeclimate.com/github/fdaciuk/ajax
-[license-image]: https://img.shields.io/npm/l/ajax.svg?style=flat-square
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
