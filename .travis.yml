@@ -20,5 +20,6 @@ before_script:
   - sleep 3 # give Web server some time to bind to sockets, etc
 
 after_script:
+  - "istanbul cover _mocha tests/**/*.js -- --timeout 25600"
   - "cat ./coverage/lcov.info | codeclimate"
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
