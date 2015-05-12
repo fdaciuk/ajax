@@ -1,6 +1,16 @@
 # Ajax
 > Ajax module in Vanilla JS
 
+[![Build Status][travis-image]][travis-url]
+[![Coveralls Coverage Status][coverage-image]][coverage-url]
+[![Code Climate Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
+
+[![NPM version][npm-version-image]][npm-package-url]
+[![NPM Downloads][npm-downloads-image]][npm-package-url]
+[![Dependencies][dependencies-image]][npm-package-url]
+[![License][license-image]][license-url]
+
 ## Methods
 
 ### `get(url)`
@@ -80,4 +90,15 @@ Check [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
-[MIT](https://github.com/fdaciuk/ajax/blob/master/LICENSE.md) © Fernando Daciuk
+[MIT][license-url] © Fernando Daciuk
+
+[travis-image]: https://img.shields.io/travis/fdaciuk/ajax.svg?style=flat-square
+[travis-url]: https://travis-ci.org/fdaciuk/ajax
+[coverage-image]: https://img.shields.io/coveralls/fdaciuk/ajax/master.svg?style=flat-square
+[coverage-url]: https://coveralls.io/r/fdaciuk/ajax?branch=master
+[codeclimate-coverage-image]: https://img.shields.io/codeclimate/coverage/github/fdaciuk/ajax.svg?style=flat-square
+[codeclimate-coverage-url]: https://codeclimate.com/github/fdaciuk/ajax
+[codeclimate-image]: https://img.shields.io/codeclimate/github/fdaciuk/ajax.svg?style=flat-square
+[codeclimate-url]: https://codeclimate.com/github/fdaciuk/ajax
+[license-image]: https://img.shields.io/npm/l/ajax.svg?style=flat-square
+[license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
