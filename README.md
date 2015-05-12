@@ -89,15 +89,15 @@ Check [CONTRIBUTING.md][contributing-url]
 
 [MIT][license-url] © Fernando Daciuk
 
-[travis-image]: https://img.shields.io/travis/fdaciuk/ajax.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/fdaciuk/ajax.svg
 [travis-url]: https://travis-ci.org/fdaciuk/ajax
-[coverage-image]: https://img.shields.io/coveralls/fdaciuk/ajax/master.svg?style=flat-square
+[coverage-image]: https://img.shields.io/coveralls/fdaciuk/ajax/master.svg
 [coverage-url]: https://coveralls.io/r/fdaciuk/ajax?branch=master
-[codeclimate-coverage-image]: https://img.shields.io/codeclimate/coverage/github/fdaciuk/ajax.svg?style=flat-square
+[codeclimate-coverage-image]: https://img.shields.io/codeclimate/coverage/github/fdaciuk/ajax.svg
 [codeclimate-coverage-url]: https://codeclimate.com/github/fdaciuk/ajax
-[codeclimate-image]: https://img.shields.io/codeclimate/github/fdaciuk/ajax.svg?style=flat-square
+[codeclimate-image]: https://img.shields.io/codeclimate/github/fdaciuk/ajax.svg
 [codeclimate-url]: https://codeclimate.com/github/fdaciuk/ajax
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
-[contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg?style=flat-square
+[contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg
 [contributing-url]: CONTRIBUTING.md
