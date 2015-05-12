@@ -5,10 +5,6 @@
 [![Coveralls Coverage Status][coverage-image]][coverage-url]
 [![Code Climate Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
-
-[![NPM version][npm-version-image]][npm-package-url]
-[![NPM Downloads][npm-downloads-image]][npm-package-url]
-[![Dependencies][dependencies-image]][npm-package-url]
 [![License][license-image]][license-url]
 
 ## Methods
