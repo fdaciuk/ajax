@@ -8,12 +8,10 @@ var testFiles = 'tests/**/*.js';
 var coreFiles = 'src/**/*.js';
 var allFiles = [ testFiles, coreFiles ];
 
-gulp.task( 'assets', function() {
-  gulp.src([
-    'node_modules/gulp-mocha/node_modules/mocha/mocha.{js,css}',
-    'node_modules/chai/chai.js'
-  ])
-  .pipe( gulp.dest( 'public' ) );
+gulp.task( 'coverage', function( done ) {
+  return exec( 'istanbul cover _mocha tests/**/*.js -- --timeout 25600', function( stdin, stdout, stderr ) {
+    done();
+  });
 });
 
 gulp.task( 'test', [ 'coverage' ], function( done ) {
@@ -31,11 +29,7 @@ gulp.task( 'test', [ 'coverage' ], function( done ) {
     });
 });
 
-gulp.task( 'coverage', function( done ) {
-  return exec( 'istanbul cover _mocha tests/**/*.js -- --timeout 25600', function( stdin, stdout, stderr ) {
-    done();
-  });
-});
+gulp.task( 'travis', [ 'test' ] );
 
 gulp.task( 'webserver', function() {
   require( './api/app' );
@@ -43,7 +37,13 @@ gulp.task( 'webserver', function() {
   console.log( 'Server listen on port 9001' );
 });
 
-gulp.task( 'travis', [ 'test' ] );
+gulp.task( 'assets', function() {
+  gulp.src([
+    'node_modules/gulp-mocha/node_modules/mocha/mocha.{js,css}',
+    'node_modules/chai/chai.js'
+  ])
+  .pipe( gulp.dest( 'public' ) );
+});
 
 gulp.task( 'default', [ 'assets', 'webserver', 'test' ], function() {
   gulp.watch( allFiles, [ 'test' ]);
