@@ -4,7 +4,9 @@ var gulp = require( 'gulp' );
 var g = require( 'gulp-load-plugins' )();
 var exec = require( 'child_process' ).exec;
 
-var allTestFiles = './tests/**/*.js';
+var testFiles = 'tests/**/*.js';
+var coreFiles = 'src/**/*.js';
+var allFiles = [ testFiles, coreFiles ];
 
 gulp.task( 'assets', function() {
   gulp.src([
@@ -14,14 +16,25 @@ gulp.task( 'assets', function() {
   .pipe( gulp.dest( 'public' ) );
 });
 
-gulp.task( 'test', function( done ) {
-  gulp.src([ allTestFiles ])
-    .pipe( g.istanbul() )
+gulp.task( 'test', [ 'coverage' ], function( done ) {
+  var coverageFile = 'coverage/coverage.json';
+  return gulp.src( 'index.html', { read: false } )
+    .pipe( g.mochaPhantomjs({
+      phantomjs: {
+        hooks: 'mocha-phantomjs-istanbul',
+        coverageFile: coverageFile
+      }
+    }) )
     .on( 'finish', function() {
-      gulp.src([ 'src/ajax.js', allTestFiles ])
-      .pipe( g.istanbul.writeReports() )
-      .on( 'end', done );
+      gulp.src( coverageFile )
+        .pipe( g.istanbulReport() );
     });
+});
+
+gulp.task( 'coverage', function( done ) {
+  return exec( 'istanbul cover _mocha tests/test.ajax.js', function( stdin, stdout, stderr ) {
+    done();
+  });
 });
 
 gulp.task( 'python', function() {
@@ -31,5 +44,5 @@ gulp.task( 'python', function() {
 
 gulp.task( 'default', [ 'assets' ], function() {
   require( './api/app' );
-  gulp.watch([ allTestFiles, 'src/ajax.js' ], [ 'test' ]);
+  gulp.watch( allFiles, [ 'test' ]);
 });

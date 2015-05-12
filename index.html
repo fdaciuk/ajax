@@ -12,6 +12,10 @@
   <script src="public/mocha.js"></script>
   <script>mocha.setup('bdd')</script>
   <script src="tests/test.ajax.js"></script>
-  <script>mocha.run()</script>
+  <script>
+    ;(function() {
+      return (mochaPhantomJS || mocha).run();
+    })();
+  </script>
 </body>
 </html>

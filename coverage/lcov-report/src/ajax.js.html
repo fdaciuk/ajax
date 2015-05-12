@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/ajax.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src/ajax.js</span></h1>
+    <h2>
+        Statements: <span class="metric">50.91% <small>(28 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">37.5% <small>(6 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">45% <small>(9 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">50.91% <small>(28 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric">2 statements, 3 branches</span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ajax.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">;(function ( root, factory ) {
+  'use strict';
+  /* istanbul ignore next */
+  <span class="skip-if-branch" title="if path not taken" >I</span>if ( typeof define === 'function' &amp;&amp; <span class="branch-1 cbranch-skip" title="branch not covered" >define.amd </span>) {
+<span class="cstat-skip" title="statement not covered" >    define( 'Ajax', factory );</span>
+  }
+  else <span class="skip-if-branch" title="else path not taken" >E</span>if ( typeof exports === 'object' ) {
+    exports = module.exports = factory();
+  }
+  else {
+<span class="cstat-skip" title="statement not covered" >    root.Ajax = factory();</span>
+  }
+})(this, function() {
+  'use strict';
+&nbsp;
+  function Ajax() {
+    var $public = {};
+    var $private = {};
+&nbsp;
+    $private.methods = {
+      done: <span class="fstat-no" title="function not covered" >function() {</span>},
+      error: <span class="fstat-no" title="function not covered" >function() {</span>},
+      always: <span class="fstat-no" title="function not covered" >function() {</span>}
+    };
+&nbsp;
+    $public.get = function get( url ) {
+      return $private.XHRConnection( 'GET', url, null );
+    };
+&nbsp;
+    $public.post = function post( url, data ) {
+      return $private.XHRConnection( 'POST', url, data );
+    };
+&nbsp;
+    $public.put = function put( url, data ) {
+      return $private.promises( 'PUT', url, data );
+    };
+&nbsp;
+    $public.delete = function del( url, data ) {
+      return $private.promises( 'DELETE', url, data );
+    };
+&nbsp;
+    $private.XHRConnection = function XHRConnection( type, url, data ) {
+      var xhr = new XMLHttpRequest();
+<span class="cstat-no" title="statement not covered" >      xhr.open( type, url || '', true );</span>
+<span class="cstat-no" title="statement not covered" >      xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );</span>
+<span class="cstat-no" title="statement not covered" >      xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );</span>
+<span class="cstat-no" title="statement not covered" >      xhr.send( $private.convertObjectToQueryString( data ) );</span>
+<span class="cstat-no" title="statement not covered" >      return $private.promises();</span>
+    };
+&nbsp;
+    $private.handleReadyStateChange = <span class="fstat-no" title="function not covered" >function handleReadyStateChange() {</span>
+<span class="cstat-no" title="statement not covered" >      var xhr = this;</span>
+<span class="cstat-no" title="statement not covered" >      var DONE = 4;</span>
+<span class="cstat-no" title="statement not covered" >      if( xhr.readyState === DONE ) {</span>
+<span class="cstat-no" title="statement not covered" >        $private.methods.always.apply( $private.methods, $private.parseResponse( xhr ) );</span>
+<span class="cstat-no" title="statement not covered" >        if( xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 ) {</span>
+<span class="cstat-no" title="statement not covered" >          return $private.methods.done.apply( $private.methods, $private.parseResponse( xhr ) );</span>
+        }
+<span class="cstat-no" title="statement not covered" >        $private.methods.error.apply( $private.methods, $private.parseResponse( xhr ) );</span>
+      }
+    };
+&nbsp;
+    $private.parseResponse = <span class="fstat-no" title="function not covered" >function parseResponse( xhr ) {</span>
+<span class="cstat-no" title="statement not covered" >      var result;</span>
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        result = JSON.parse( xhr.responseText );</span>
+      }
+      catch( e ) {
+<span class="cstat-no" title="statement not covered" >        result = xhr.responseText;</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return [ result, xhr ];</span>
+    };
+&nbsp;
+    $private.promises = function promises() {
+      return {
+        done: <span class="fstat-no" title="function not covered" >function done( callback ) {</span>
+<span class="cstat-no" title="statement not covered" >          return ( $private.methods.done = callback, this );</span>
+        },
+        error: <span class="fstat-no" title="function not covered" >function error( callback ) {</span>
+<span class="cstat-no" title="statement not covered" >          return ( $private.methods.error = callback, this );</span>
+        },
+        always: <span class="fstat-no" title="function not covered" >function always( callback ) {</span>
+<span class="cstat-no" title="statement not covered" >          return ( $private.methods.always = callback, this );</span>
+        }
+      };
+    };
+&nbsp;
+    $private.convertObjectToQueryString = <span class="fstat-no" title="function not covered" >function convertObjectToQueryString( data ) {</span>
+<span class="cstat-no" title="statement not covered" >      var convertedData = [];</span>
+<span class="cstat-no" title="statement not covered" >      if( ! $private.isObject( data ) )</span>
+<span class="cstat-no" title="statement not covered" >        return data;</span>
+<span class="cstat-no" title="statement not covered" >      Object.keys( data ).forEach(<span class="fstat-no" title="function not covered" >function( key ) {</span></span>
+<span class="cstat-no" title="statement not covered" >        convertedData.push( key + '=' + data[ key ] );</span>
+      });
+<span class="cstat-no" title="statement not covered" >      return convertedData.join( '&amp;' );</span>
+    };
+&nbsp;
+    $private.isObject = <span class="fstat-no" title="function not covered" >function isObject( data ) {</span>
+<span class="cstat-no" title="statement not covered" >      return '[object Object]' === Object.prototype.toString.call( data );</span>
+    };
+&nbsp;
+    return $public;
+  }
+&nbsp;
+  return Ajax;
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 11 2015 23:15:30 GMT-0300 (BRT)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

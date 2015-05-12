@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "watch": "gulp default python",
     "test": "gulp default python"
   },
   "devDependencies": {
@@ -9,7 +10,10 @@
     "connect-route": "^0.1.5",
     "gulp": "^3.8.11",
     "gulp-istanbul": "^0.6.0",
+    "gulp-istanbul-report": "0.0.1",
     "gulp-load-plugins": "^0.8.1",
-    "gulp-mocha": "^2.0.0"
+    "gulp-mocha": "^2.0.0",
+    "gulp-mocha-phantomjs": "^0.6.1",
+    "mocha-phantomjs-istanbul": "0.0.2"
   }
 }
