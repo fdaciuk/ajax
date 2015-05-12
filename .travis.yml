@@ -13,11 +13,7 @@ addons:
     repo_token: Gx2aWXWXVtH2Q59d8vbsXCNFCfiL9QdGG
 
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-  - "gulp webserver &"  # start a Web server
-  - sleep 3 # give Web server some time to bind to sockets, etc
+  - "gulp webserver &"
 
 after_script:
   - "istanbul cover _mocha tests/**/*.js -- --timeout 25600"
