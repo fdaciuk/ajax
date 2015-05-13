@@ -12,6 +12,9 @@ addons:
   coveralls:
     repo_token: Gx2aWXWXVtH2Q59d8vbsXCNFCfiL9QdGG
 
+before_script:
+  - "gulp webserver &"
+
 after_script:
   - "cat ./coverage/lcov.info | codeclimate"
   - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"

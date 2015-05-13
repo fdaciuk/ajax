@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "gulp webserver test &"
+    "test": "gulp test"
   },
   "devDependencies": {
     "body-parser": "^1.12.2",
