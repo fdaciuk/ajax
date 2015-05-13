@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "gulp travis"
+    "test": "gulp webserver test &"
   },
   "devDependencies": {
     "body-parser": "^1.12.2",
@@ -8,11 +8,13 @@
     "connect": "^3.3.4",
     "connect-route": "^0.1.5",
     "gulp": "^3.8.11",
-    "gulp-istanbul": "^0.6.0",
-    "gulp-istanbul-report": "0.0.1",
-    "gulp-load-plugins": "^0.8.1",
     "gulp-mocha": "^2.0.0",
     "gulp-mocha-phantomjs": "^0.6.1",
-    "mocha-phantomjs-istanbul": "0.0.2"
+    "karma": "^0.12.31",
+    "karma-coverage": "^0.3.1",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^1.0.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.4"
   }
 }

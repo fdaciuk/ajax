@@ -1,35 +1,15 @@
 'use strict';
 
 var gulp = require( 'gulp' );
-var g = require( 'gulp-load-plugins' )();
+var karma = require( 'karma' ).server;
 var exec = require( 'child_process' ).exec;
 
-var testFiles = 'tests/**/*.js';
-var coreFiles = 'src/**/*.js';
-var allFiles = [ testFiles, coreFiles ];
-
-gulp.task( 'coverage', function( done ) {
-  return exec( 'istanbul cover _mocha tests/**/*.js -- --timeout 25600', function( stdin, stdout, stderr ) {
-    done();
-  });
+gulp.task( 'test', function( done ) {
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done );
 });
-
-gulp.task( 'test', [ 'coverage' ], function( done ) {
-  var coverageFile = 'coverage/coverage.json';
-  return gulp.src( 'index.html', { read: false } )
-    .pipe( g.mochaPhantomjs({
-      phantomjs: {
-        hooks: 'mocha-phantomjs-istanbul',
-        coverageFile: coverageFile
-      }
-    }) )
-    .on( 'finish', function() {
-      gulp.src( coverageFile )
-        .pipe( g.istanbulReport() );
-    });
-});
-
-gulp.task( 'travis', [ 'test' ] );
 
 gulp.task( 'webserver', function() {
   require( './api/app' );
@@ -37,14 +17,8 @@ gulp.task( 'webserver', function() {
   console.log( 'Server listen on port 9001' );
 });
 
-gulp.task( 'assets', function() {
-  gulp.src([
-    'node_modules/gulp-mocha/node_modules/mocha/mocha.{js,css}',
-    'node_modules/chai/chai.js'
-  ])
-  .pipe( gulp.dest( 'public' ) );
+gulp.task( 'watch', [ 'test' ], function() {
+  gulp.watch( '{test,src}/**/*.js', [ 'test' ]);
 });
 
-gulp.task( 'default', [ 'assets', 'webserver', 'test' ], function() {
-  gulp.watch( allFiles, [ 'test' ]);
-});
+gulp.task( 'default', [ 'webserver', 'watch' ]);

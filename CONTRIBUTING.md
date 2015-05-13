@@ -5,10 +5,10 @@
 
 ## Running
 
-You need to install `gulp`, `mocha` and `istanbul` globally:
+You need to install `gulp`, `mocha`, `karma-cli` and `istanbul` globally:
 
 ```sh
-[sudo] npm i -g gulp mocha istanbul
+[sudo] npm i -g gulp mocha istanbul karma-cli
 ```
 
 After that, you need to install local modules:
