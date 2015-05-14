@@ -85,6 +85,10 @@ ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
 
 Check [CONTRIBUTING.md][contributing-url]
 
+## Code coverage and Statistics
+
+<https://github.com/reportz/ajax>
+
 ## License
 
 [MIT][license-url] © Fernando Daciuk
