@@ -1,7 +1,6 @@
 languages:
   JavaScript: true
 exclude_paths:
-  - ".publish/"
-  - "api/"
-  - "test/"
+  - "api"
+  - "test"
   - "*.js"
