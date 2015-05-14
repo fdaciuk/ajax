@@ -4,4 +4,4 @@ exclude_paths:
   - ".publish/"
   - "api/"
   - "test/"
-  - "./*.js"
+  - "*.js"
