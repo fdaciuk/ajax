@@ -69,7 +69,10 @@ gulp.task( 'deploy', function( done ) {
     'git push origin gh-pages',
     'cd ../',
     'rm -rf .tmp',
-    'dpl'
+    'git checkout master',
+    'git merge dev',
+    'git push origin master',
+    'git checkout dev'
   ];
   exec( commands.join( ' && ' ), function( err, stdout, stderr ) {
     if( err ) throw err;
