@@ -72,6 +72,8 @@ gulp.task( 'deploy', function( done ) {
     'dpl'
   ];
   exec( commands.join( ' && ' ), function( err, stdout, stderr ) {
+    if( err ) throw err;
+    if( stderr ) throw stderr;
     console.log( 'Done!' );
     process.exit(1);
     done();
