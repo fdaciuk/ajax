@@ -75,9 +75,10 @@ gulp.task( 'deploy', function( done ) {
     'git checkout dev'
   ];
   exec( commands.join( ' && ' ), function( err, stdout, stderr ) {
-    if( err ) throw err;
-    if( stderr ) return console.log( stderr );
     console.log( 'Done!' );
+    if( stdout ) console.log( 'STDOUT:', stdout );
+    if( stderr ) console.log( 'STDERR:', stderr );
+    if( err ) console.log( 'ERROR:', err );
     process.exit(1);
     done();
   });
