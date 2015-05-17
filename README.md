@@ -1,7 +1,9 @@
 # Ajax
 > Ajax module in Vanilla JS
 
-<img align="right" src="ajax-logo.png" alt="Ajax" />
+<p align="center">
+  <img src="ajax-logo.png" alt="Ajax" />
+</p>
 
 [![Build Status][travis-image]][travis-url]
 [![Coveralls Coverage Status][coverage-image]][coverage-url]
@@ -10,9 +12,9 @@
 [![License][license-image]][license-url]
 [![CONTRIBUTING][contributing-image]][contributing-url]
 
-### Methods
+## Methods
 
-#### `get(url)`
+### `get(url)`
 
 > Get data as a JSON object.
 
@@ -21,7 +23,7 @@ var ajax = new Ajax();
 ajax.get( '/api/users' );
 ```
 
-#### `post(url, [ data ])`
+### `post(url, [ data ])`
 
 > Save a new register.
 
@@ -30,7 +32,7 @@ var ajax = new Ajax();
 ajax.post( '/api/users', { data: 'value' });
 ```
 
-#### `put(url, [ data ])`
+### `put(url, [ data ])`
 
 > Upgrade part of a register.
 
@@ -39,7 +41,7 @@ var ajax = new Ajax();
 ajax.put( '/api/users', { slug: 'john' });
 ```
 
-#### `delete(url, [ data ])`
+### `delete(url, [ data ])`
 
 > Delete a register.
 
@@ -48,9 +50,9 @@ var ajax = new Ajax();
 ajax.delete( '/api/users', { id: 1 });
 ```
 
-### Return methods
+## Return methods
 
-#### `done(response, xhrObject)`
+### `done(response, xhrObject)`
 
 > Promise that returns if the request was successful.
 
@@ -61,7 +63,7 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 });
 ```
 
-#### `error(response, xhrObject)`
+### `error(response, xhrObject)`
 
 > Promise that returns if the request has an error.
 
@@ -72,7 +74,7 @@ ajax.post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
 });
 ```
 
-#### `always(response, xhrObject)`
+### `always(response, xhrObject)`
 
 > That promise always returns, independent if the status is `done` or `error`.
 
@@ -83,15 +85,15 @@ ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
 });
 ```
 
-### Contributing
+## Contributing
 
 Check [CONTRIBUTING.md][contributing-url]
 
-### Code coverage and Statistics
+## Code coverage and Statistics
 
 <https://github.com/reportz/ajax>
 
-### License
+## License
 
 [MIT][license-url] © Fernando Daciuk
 
