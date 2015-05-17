@@ -58,7 +58,7 @@ gulp.task( 'deploy', function( done ) {
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
-    'dpl',
+    'git push origin master',
     'gulp plato',
     'rm -rf .tmp',
     'mkdir .tmp',
