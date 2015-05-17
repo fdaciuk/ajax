@@ -22,7 +22,7 @@ Add `dist/ajax.min.js` on your HTML:
 
 You can use this module with _AMD_, _CommonJS_ or just like a method of `window` object!
 
-### AMD
+#### AMD
 
 ```js
 define([ 'Ajax' ], function( Ajax ) {
@@ -31,7 +31,7 @@ define([ 'Ajax' ], function( Ajax ) {
 });
 ```
 
-### CommonJS
+#### CommonJS
 
 ```js
 var Ajax = require( './js/Ajax' );
@@ -39,7 +39,7 @@ var ajax = new Ajax();
 ...
 ```
 
-### Method of `window` object
+#### Method of `window` object
 
 ```js
 var ajax = new window.Ajax();
