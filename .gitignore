@@ -2,3 +2,4 @@ node_modules
 coverage
 report
 plato
+.tmp

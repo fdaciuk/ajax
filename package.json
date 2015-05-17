@@ -11,11 +11,13 @@
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.0",
     "gulp-mocha-phantomjs": "^0.6.1",
+    "gulp-uglify": "^1.2.0",
     "karma": "^0.12.31",
     "karma-coverage": "^0.3.1",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
     "karma-phantomjs-launcher": "^0.1.4",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "plato": "^1.4.0"
   }
 }

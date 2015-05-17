@@ -45,17 +45,13 @@
     });
 
     it( 'Should return the same result on both promises `done` and `always`', function( done ) {
+      function requestResponse( response, xhr ) {
+        response.should.be.an( 'object' );
+        done();
+      }
       ajax.get( 'http://127.0.0.1:3000/api/users' )
-        .done(function requestResponse( response, xhr ) {
-          console.log( 'done' );
-          response.should.be.an( 'object' );
-          done();
-        })
-        .always(function requestResponse( response, xhr ) {
-          console.log( 'always' );
-          response.should.be.an( 'object' );
-          done();
-        });
+        .done( requestResponse )
+        .always( requestResponse );
     });
   });
 });
