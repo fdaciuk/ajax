@@ -34,7 +34,7 @@ define([ 'Ajax' ], function( Ajax ) {
 #### CommonJS
 
 ```js
-var Ajax = require( './js/Ajax' );
+var Ajax = require( './js/ajax.min' );
 var ajax = new Ajax();
 ...
 ```
