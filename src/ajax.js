@@ -73,15 +73,15 @@
 
     $private.promises = function promises() {
       return {
-        done: function done( callback ) {
-          return ( $private.methods.done = callback, this );
-        },
-        error: function error( callback ) {
-          return ( $private.methods.error = callback, this );
-        },
-        always: function always( callback ) {
-          return ( $private.methods.always = callback, this );
-        }
+        done: $private.generatePromise.call( this, 'done' ),
+        error: $private.generatePromise.call( this, 'error' ),
+        always: $private.generatePromise.call( this, 'always' )
+      };
+    };
+
+    $private.generatePromise = function generatePromise( method ) {
+      return function( callback ) {
+        return ( $private.methods[ method ] = callback, this );
       };
     };
 

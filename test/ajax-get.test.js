@@ -18,7 +18,10 @@
   'use strict';
 
   describe( '#AJAX - Test `get` method', function() {
-    var ajax = new Ajax();
+    var ajax;
+    beforeEach(function() {
+      ajax = new Ajax();
+    });
 
     it( 'Should return an object (users list)', function( done ) {
       ajax.get( 'http://127.0.0.1:3000/api/users' ).done(function( response ) {
@@ -39,6 +42,20 @@
         xhr.status.should.be.equal( 404 );
         done();
       });
+    });
+
+    it( 'Should return the same result on both promises `done` and `always`', function( done ) {
+      ajax.get( 'http://127.0.0.1:3000/api/users' )
+        .done(function requestResponse( response, xhr ) {
+          console.log( 'done' );
+          response.should.be.an( 'object' );
+          done();
+        })
+        .always(function requestResponse( response, xhr ) {
+          console.log( 'always' );
+          response.should.be.an( 'object' );
+          done();
+        });
     });
   });
 });
