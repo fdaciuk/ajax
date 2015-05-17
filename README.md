@@ -1,6 +1,10 @@
 # Ajax
 > Ajax module in Vanilla JS
 
+<p align="center">
+  <img src="ajax-logo.png" alt="Ajax" />
+</p>
+
 [![Build Status][travis-image]][travis-url]
 [![Coveralls Coverage Status][coverage-image]][coverage-url]
 [![Code Climate Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
