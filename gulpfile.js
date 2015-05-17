@@ -58,7 +58,6 @@ gulp.task( 'deploy', function( done ) {
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
-    'git push origin master',
     'gulp plato',
     'rm -rf .tmp',
     'mkdir .tmp',
@@ -69,7 +68,8 @@ gulp.task( 'deploy', function( done ) {
     'git commit -m "Update reports at ' + date + ' "',
     'git push origin gh-pages',
     'cd ../',
-    'rm -rf .tmp'
+    'rm -rf .tmp',
+    'dpl'
   ];
   exec( commands.join( ' && ' ), function( err, stdout, stderr ) {
     console.log( 'Done!' );
