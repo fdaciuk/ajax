@@ -12,6 +12,16 @@
 [![License][license-image]][license-url]
 [![CONTRIBUTING][contributing-image]][contributing-url]
 
+## Usage
+
+Add `dist/ajax.min.js` on your HTML:
+
+```html
+<script src="js/ajax.min.js"></script>
+```
+
+Enjoy ;)
+
 ## Methods
 
 ### `get(url)`
