@@ -3,6 +3,7 @@
 var gulp = require( 'gulp' );
 var karma = require( 'karma' ).server;
 var jshint = require( 'gulp-jshint' );
+var concat = require( 'gulp-concat' );
 var uglify = require( 'gulp-uglify' );
 var plato = require( 'plato' );
 var exec = require( 'child_process' ).exec;
@@ -14,6 +15,13 @@ gulp.task( 'lint', function() {
   gulp.src( allFiles )
     .pipe( jshint() )
     .pipe( jshint.reporter( 'default' ) );
+});
+
+gulp.task( 'uglify', function() {
+  gulp.src( coreFiles )
+    .pipe( concat( 'ajax.min.js' ) )
+    .pipe( uglify() )
+    .pipe( gulp.dest( './dist' ) );
 });
 
 gulp.task( 'test', [ 'lint' ], function( done ) {
@@ -47,6 +55,10 @@ gulp.task( 'deploy', function( done ) {
   console.log( 'Deploying...' );
   var date = new Date( Date.now() );
   var commands = [
+    'gulp uglify',
+    'git add .',
+    'git commit -m "Minifying"',
+    'dpl',
     'gulp plato',
     'rm -rf .tmp',
     'mkdir .tmp',
