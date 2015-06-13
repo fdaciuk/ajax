@@ -32,11 +32,11 @@
     };
 
     $public.put = function put( url, data ) {
-      return $private.promises( 'PUT', url, data );
+      return $private.XHRConnection( 'PUT', url, data );
     };
 
     $public.delete = function del( url, data ) {
-      return $private.promises( 'DELETE', url, data );
+      return $private.XHRConnection( 'DELETE', url, data );
     };
 
     $private.XHRConnection = function XHRConnection( type, url, data ) {
