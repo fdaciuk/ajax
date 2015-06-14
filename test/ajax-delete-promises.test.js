@@ -29,7 +29,7 @@
       deleteRequest.should.have.property( 'error' );
     });
 
-    it( 'Should `delete` method return `error` method', function() {
+    it( 'Should `delete` method return `always` method', function() {
       deleteRequest.should.have.property( 'always' );
     });
   });
