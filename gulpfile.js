@@ -46,7 +46,7 @@ gulp.task( 'watch', [ 'test', 'lint' ], function() {
 gulp.task( 'plato', function( done ) {
   var files = [ coreFiles ];
   var outputDir = './plato';
-  var options = { title: '#Ajax', jshint: './.jshintrc' };
+  var options = { title: '#Ajax' };
   function callback( report ) { done(); };
   plato.inspect( files, outputDir, options, callback );
 });
