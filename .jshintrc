@@ -11,7 +11,12 @@
   "eqnull"  : true,
   "node"    : true,
   "globals" : {
-    "document" : true,
-    "window"   : true
+    "document"       : true,
+    "window"         : true,
+    "define"         : true,
+    "it"             : true,
+    "describe"       : true,
+    "beforeEach"     : true,
+    "XMLHttpRequest" : true
   }
 }

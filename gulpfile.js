@@ -9,7 +9,7 @@ var plato = require( 'plato' );
 var exec = require( 'child_process' ).exec;
 
 var coreFiles = 'src/**/*.js';
-var allFiles = '{test/src}/**/*.js';
+var allFiles = '{test,src}/**/*.js';
 
 gulp.task( 'lint', function() {
   gulp.src( allFiles )
@@ -24,7 +24,7 @@ gulp.task( 'uglify', function() {
     .pipe( gulp.dest( './dist' ) );
 });
 
-gulp.task( 'test', [ 'lint' ], function( done ) {
+gulp.task( 'test', function( done ) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
@@ -39,14 +39,14 @@ gulp.task( 'webserver', function( done ) {
   });
 });
 
-gulp.task( 'watch', [ 'test' ], function() {
-  gulp.watch( '{test,src}/**/*.js', [ 'test' ]);
+gulp.task( 'watch', [ 'test', 'lint' ], function() {
+  gulp.watch( '{test,src}/**/*.js', [ 'test', 'lint' ]);
 });
 
 gulp.task( 'plato', function( done ) {
   var files = [ coreFiles ];
   var outputDir = './plato';
-  var options = { title: '#Ajax' };
+  var options = { title: '#Ajax', jshint: './.jshintrc' };
   function callback( report ) { done(); };
   plato.inspect( files, outputDir, options, callback );
 });

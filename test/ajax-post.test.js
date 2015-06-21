@@ -38,7 +38,7 @@
       ajax.post( 'http://127.0.0.1:3000/api/user', { slug: 'alberto' }).error(function( response, xhr ) {
         xhr.status.should.be.equal( 404 );
         done();
-      })
+      });
     });
   });
 });

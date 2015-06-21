@@ -82,8 +82,9 @@
     };
 
     $private.objectToQueryString = function objectToQueryString( data ) {
-      if( !$private.isObject( data ) )
+      if( !$private.isObject( data ) ) {
         return data;
+      }
 
       return Object.keys( data ).map( function( item ) {
         return item + '=' + data[ item ];
