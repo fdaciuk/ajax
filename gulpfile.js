@@ -5,6 +5,7 @@ var karma = require( 'karma' ).server;
 var jshint = require( 'gulp-jshint' );
 var concat = require( 'gulp-concat' );
 var uglify = require( 'gulp-uglify' );
+var jscs = require( 'gulp-jscs' );
 var plato = require( 'plato' );
 var exec = require( 'child_process' ).exec;
 
@@ -15,6 +16,9 @@ gulp.task( 'lint', function() {
   gulp.src( allFiles )
     .pipe( jshint() )
     .pipe( jshint.reporter( 'default' ) );
+
+  gulp.src( allFiles )
+    .pipe( jscs() );
 });
 
 gulp.task( 'uglify', function() {
