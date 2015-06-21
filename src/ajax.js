@@ -1,10 +1,10 @@
-;(function ( root, factory ) {
+;(function( root, factory ) {
   'use strict';
   /* istanbul ignore next */
-  if ( typeof define === 'function' && define.amd ) {
+  if( typeof define === 'function' && define.amd ) {
     define( 'Ajax', factory );
   }
-  else if ( typeof exports === 'object' ) {
+  else if( typeof exports === 'object' ) {
     exports = module.exports = factory();
   }
   else {
