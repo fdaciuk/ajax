@@ -82,12 +82,14 @@
     };
 
     $private.objectToQueryString = function objectToQueryString( data ) {
-      if( !$private.isObject( data ) ) {
-        return data;
-      }
+      return $private.isObject( data )
+        ? $private.getQueryString( data )
+        : data;
+    };
 
-      return Object.keys( data ).map( function( item ) {
-        return item + '=' + data[ item ];
+    $private.getQueryString = function getQueryString( object ) {
+      return Object.keys( object ).map( function( item ) {
+        return item + '=' + object[ item ];
       }).join( '&' );
     };
 
