@@ -18,7 +18,12 @@ gulp.task( 'lint', function() {
     .pipe( jshint.reporter( 'default' ) );
 
   gulp.src( allFiles )
-    .pipe( jscs() );
+    .pipe( jscs() )
+    .on( 'error', function( data ) {
+      var ERROR_CODE = 1;
+      console.log( data );
+      process.exit( ERROR_CODE );
+    });
 });
 
 gulp.task( 'uglify', function() {

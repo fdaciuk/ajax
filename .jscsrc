@@ -72,6 +72,12 @@
   "requireSpacesInAnonymousFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
+  "requireSpacesInConditionalExpression": {
+    "afterTest": true,
+    "beforeConsequent": true,
+    "afterConsequent": true,
+    "beforeAlternate": true
+  },
   "requireCommaBeforeLineBreak": true,
   "disallowEmptyBlocks": true,
   "disallowMixedSpacesAndTabs": true,
@@ -86,5 +92,7 @@
   "disallowSpaceAfterObjectKeys": true,
   "requireSpaceBeforeBlockStatements": 1,
   "requireSpaceBeforeObjectValues": true,
-  "requireSpaceBetweenArguments": true
+  "requireSpaceBetweenArguments": true,
+  "disallowSpacesInCallExpression": true,
+  "requireSpacesInForStatement": true
 }
