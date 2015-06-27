@@ -78,6 +78,15 @@
     "afterConsequent": true,
     "beforeAlternate": true
   },
+  "requireSpacesInFunction": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInsideArrayBrackets": {
+    "allExcept": [ "[", "]", "{", "}" ]
+  },
+  "disallowSpacesInsideParentheses": {
+    "only": [ "[", "]", "{", "}" ]
+  },
   "requireCommaBeforeLineBreak": true,
   "disallowEmptyBlocks": true,
   "disallowMixedSpacesAndTabs": true,
@@ -94,5 +103,7 @@
   "requireSpaceBeforeObjectValues": true,
   "requireSpaceBetweenArguments": true,
   "disallowSpacesInCallExpression": true,
-  "requireSpacesInForStatement": true
+  "requireSpacesInForStatement": true,
+  "disallowTrailingComma": true,
+  "disallowTrailingWhitespace": true
 }
