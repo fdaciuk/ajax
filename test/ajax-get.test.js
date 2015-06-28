@@ -15,20 +15,23 @@
     });
 
     it( 'Should return 404 error', function( done ) {
-      ajax.get( 'http://127.0.0.1:3000/api/something' ).error(function( response, xhr ) {
+      ajax.get( 'http://127.0.0.1:3000/api/something' )
+      .error(function( response, xhr ) {
         xhr.status.should.be.equal( 404 );
         done();
       });
     });
 
     it( 'Should return 404 error on `always` promise', function( done ) {
-      ajax.get( 'http://127.0.0.1:3000/api/something' ).always(function( response, xhr ) {
+      ajax.get( 'http://127.0.0.1:3000/api/something' )
+      .always(function( response, xhr ) {
         xhr.status.should.be.equal( 404 );
         done();
       });
     });
 
-    it( 'Should return the same result on both promises `done` and `always`', function( done ) {
+    it( 'Should return the same result on both promises `done` and `always`',
+    function( done ) {
       function requestResponse( response, xhr ) {
         response.should.be.an( 'object' );
         done();
