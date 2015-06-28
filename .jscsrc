@@ -105,5 +105,9 @@
   "disallowSpacesInCallExpression": true,
   "requireSpacesInForStatement": true,
   "disallowTrailingComma": true,
-  "disallowTrailingWhitespace": true
+  "disallowTrailingWhitespace": true,
+  "maximumLineLength": {
+    "value": 80,
+    "allowRegex": true
+  }
 }
