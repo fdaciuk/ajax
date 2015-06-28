@@ -19,9 +19,9 @@ gulp.task( 'lint', function() {
 
   gulp.src( allFiles )
     .pipe( jscs() )
-    .on( 'error', function( data ) {
+    .on( 'error', function( err ) {
       var ERROR_CODE = 1;
-      console.log( data );
+      console.log( err.toString() );
       process.exit( ERROR_CODE );
     });
 });
@@ -42,7 +42,7 @@ gulp.task( 'test', function( done ) {
 
 gulp.task( 'webserver', function( done ) {
   require( './api/app' );
-  exec( 'python -m SimpleHTTPServer 9001', function() {
+  exec( 'pkill -9 python && python -m SimpleHTTPServer 9001', function() {
     console.log( 'Server listen on port 9001' );
     done();
   });
