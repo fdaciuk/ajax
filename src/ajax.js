@@ -41,22 +41,26 @@
 
     $private.XHRConnection = function XHRConnection( type, url, data ) {
       var xhr = new XMLHttpRequest();
+      var contentType = 'application/x-www-form-urlencoded';
       xhr.open( type, url || '', true );
-      xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
-      xhr.addEventListener( 'readystatechange', $private.handleReadyStateChange, false );
+      xhr.setRequestHeader( 'Content-Type', contentType );
+      xhr.addEventListener( 'readystatechange', $private.ready, false );
       xhr.send( $private.objectToQueryString( data ) );
       return $private.promises();
     };
 
-    $private.handleReadyStateChange = function handleReadyStateChange() {
+    $private.ready = function ready() {
       var xhr = this;
       var DONE = 4;
       if( xhr.readyState === DONE ) {
-        $private.methods.always.apply( $private.methods, $private.parseResponse( xhr ) );
+        $private.methods.always
+          .apply( $private.methods, $private.parseResponse( xhr ) );
         if( xhr.status >= 200 && xhr.status < 300 ) {
-          return $private.methods.done.apply( $private.methods, $private.parseResponse( xhr ) );
+          return $private.methods.done
+            .apply( $private.methods, $private.parseResponse( xhr ) );
         }
-        $private.methods.error.apply( $private.methods, $private.parseResponse( xhr ) );
+        $private.methods.error
+          .apply( $private.methods, $private.parseResponse( xhr ) );
       }
     };
 
