@@ -14,7 +14,13 @@
 
 ## Usage
 
-Add `dist/ajax.min.js` on your HTML:
+You can install via bower:
+
+```sh
+bower install ajax
+```
+
+or `dist/ajax.min.js` on your HTML:
 
 ```html
 <script src="js/ajax.min.js"></script>
