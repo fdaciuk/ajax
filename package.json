@@ -20,8 +20,6 @@
     "karma-mocha-reporter": "^1.0.2",
     "karma-phantomjs-launcher": "^0.1.4",
     "mocha": "^2.2.5",
-    "mocha-phantomjs": "^3.6.0",
-    "phantomjs": "^1.9.7-15",
     "plato": "^1.5.0"
   }
 }
