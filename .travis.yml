@@ -3,7 +3,7 @@ node_js:
   - "0.12"
 
 before_install:
-  - "npm i -g gulp mocha mocha-phantomjs phantomjs istanbul codeclimate-test-reporter"
+  - "npm i -g gulp mocha mocha-phantomjs@3.6.0 phantomjs@1.9.1 istanbul codeclimate-test-reporter"
   - "npm i --save coveralls mocha-lcov-reporter"
 
 addons:
