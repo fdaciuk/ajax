@@ -87,6 +87,13 @@
   "disallowSpacesInsideParentheses": {
     "only": [ "[", "]", "{", "}" ]
   },
+  "maximumLineLength": {
+    "value": 80,
+    "allowRegex": true
+  },
+  "requireCapitalizedConstructors": {
+    "allExcept": [ "somethingNative" ]
+  },
   "requireCommaBeforeLineBreak": true,
   "disallowEmptyBlocks": true,
   "disallowMixedSpacesAndTabs": true,
@@ -96,7 +103,6 @@
   "disallowMultipleVarDecl": true,
   "disallowNewlineBeforeBlockStatements": true,
   "disallowPaddingNewlinesInBlocks": true,
-  "disallowQuotedKeysInObjects": true,
   "requireSemicolons": true,
   "disallowSpaceAfterObjectKeys": true,
   "requireSpaceBeforeBlockStatements": 1,
@@ -106,8 +112,11 @@
   "requireSpacesInForStatement": true,
   "disallowTrailingComma": true,
   "disallowTrailingWhitespace": true,
-  "maximumLineLength": {
-    "value": 80,
-    "allowRegex": true
-  }
+  "maximumNumberOfLines": 110,
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "requireDotNotation": true,
+  "requireKeywordsOnNewLine": [ "else" ],
+  "requireLineBreakAfterVariableAssignment": true,
+  "requireLineFeedAtFileEnd": true,
+  "disallowQuotedKeysInObjects": "allButReserved"
 }
