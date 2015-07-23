@@ -12,7 +12,11 @@
 [![License][license-image]][license-url]
 [![CONTRIBUTING][contributing-image]][contributing-url]
 
-## Usage
+You can use this module with _AMD_, _CommonJS_ or just like a method of `window` object!
+
+## Installation
+
+### Bower
 
 You can install via bower:
 
@@ -20,15 +24,23 @@ You can install via bower:
 bower install ajax
 ```
 
-or add `dist/ajax.min.js` on your HTML:
+### Manual installation
+
+Just download `dist/ajax.min.js` file, and add `dist/ajax.min.js` on your HTML file:
 
 ```html
 <script src="js/ajax.min.js"></script>
 ```
 
-You can use this module with _AMD_, _CommonJS_ or just like a method of `window` object!
+### CommonJS (via NPM)
 
-#### AMD
+```sh
+npm i --save @fdaciuk/ajax
+```
+
+## Usage
+
+### AMD
 
 ```js
 define([ 'Ajax' ], function( Ajax ) {
@@ -37,15 +49,7 @@ define([ 'Ajax' ], function( Ajax ) {
 });
 ```
 
-#### CommonJS (via NPM)
-
-**Install:**
-
-```sh
-npm i --save @fdaciuk/ajax
-```
-
-**Usage:**
+### CommonJS
 
 ```js
 var Ajax = require( '@fdaciuk/ajax' );
