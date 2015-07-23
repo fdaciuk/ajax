@@ -40,7 +40,7 @@
     };
 
     $private.XHRConnection = function XHRConnection( type, url, data ) {
-      var xhr = new XMLHttpRequest();
+      var xhr = new(XMLHttpRequest || ActiveXObject)('MSXML2.XMLHTTP.3.0');
       var contentType = 'application/x-www-form-urlencoded';
       xhr.open( type, url || '', true );
       xhr.setRequestHeader( 'Content-Type', contentType );

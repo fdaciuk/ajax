@@ -25,6 +25,9 @@ gulp
 
 When you're ready, continue with next steps:
 
+- Run ```sh
+gulp uglify
+```
 - Write tests;
 - Commit your changes: `git commit -m 'Add some feature'`;
 - Push to the branch: `git push origin my-new-feature`
