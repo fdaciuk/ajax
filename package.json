@@ -1,4 +1,26 @@
 {
+  "name": "@fdaciuk/ajax",
+  "description": "Ajax module in Vanilla JS",
+  "version": "0.0.2",
+  "main": "dist/ajax.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdaciuk/ajax.git"
+  },
+  "keywords": [
+    "ajax",
+    "xmlhttprequest",
+    "xhr"
+  ],
+  "author": "Fernando Daciuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fdaciuk/ajax/issues"
+  },
+  "homepage": "https://github.com/fdaciuk/ajax#readme",
   "scripts": {
     "test": "gulp test"
   },
