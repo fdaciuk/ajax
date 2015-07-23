@@ -1,7 +1,7 @@
 {
   "name": "@fdaciuk/ajax",
   "description": "Ajax module in Vanilla JS",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/ajax.min.js",
   "directories": {
     "test": "test"
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/fdaciuk/ajax#readme",
   "scripts": {
     "test": "gulp test",
-    "publish" : "npm publish --access=public"
+    "publish": "npm publish --access=public"
   },
   "devDependencies": {
     "body-parser": "^1.13.2",
