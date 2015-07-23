@@ -3,3 +3,4 @@ coverage
 report
 plato
 .tmp
+npm-debug.log
