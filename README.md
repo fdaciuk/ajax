@@ -37,10 +37,18 @@ define([ 'Ajax' ], function( Ajax ) {
 });
 ```
 
-#### CommonJS
+#### CommonJS (via NPM)
+
+**Install:**
+
+```sh
+npm i --save @fdaciuk/ajax
+```
+
+**Usage:**
 
 ```js
-var Ajax = require( './js/ajax.min' );
+var Ajax = require( '@fdaciuk/ajax' );
 var ajax = new Ajax();
 ...
 ```
