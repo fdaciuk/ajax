@@ -72,11 +72,11 @@
     };
 
     $private.promises = function promises() {
-      return {
-        done: $private.generatePromise.call( this, 'done' ),
-        error: $private.generatePromise.call( this, 'error' ),
-        always: $private.generatePromise.call( this, 'always' )
-      };
+      var allPromises = {};
+      Object.keys( $private.methods ).forEach(function( promise ) {
+        allPromises[ promise ] = $private.generatePromise.call( this, promise );
+      }, this );
+      return allPromises;
     };
 
     $private.generatePromise = function generatePromise( method ) {
