@@ -1,7 +1,7 @@
 {
   "name": "@fdaciuk/ajax",
   "description": "Ajax module in Vanilla JS",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/ajax.min.js",
   "directories": {
     "test": "test"
