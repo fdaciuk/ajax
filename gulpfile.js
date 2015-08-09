@@ -97,7 +97,8 @@ gulp.task( 'deploy', function( done ) {
     'rm -rf .tmp',
     'git checkout master',
     'git merge dev',
-    'git push origin master',
+    'git push origin master --tags',
+    'npm run publish',
     'git checkout dev'
   ];
   exec( commands.join( ' && ' ), function( err, stdout, stderr ) {
