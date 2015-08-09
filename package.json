@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/fdaciuk/ajax/issues"
   },
-  "homepage": "https://github.com/fdaciuk/ajax#readme",
+  "homepage": "https://github.com/fdaciuk/ajax",
   "scripts": {
     "test": "gulp test",
     "publish": "npm publish --access=public"
@@ -32,6 +32,7 @@
     "connect-route": "^0.1.5",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
+    "gulp-header": "^1.2.2",
     "gulp-jscs": "^1.6.0",
     "gulp-jshint": "^1.11.2",
     "gulp-mocha": "^2.1.3",

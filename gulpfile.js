@@ -5,12 +5,28 @@ var karma = require( 'karma' ).server;
 var jshint = require( 'gulp-jshint' );
 var concat = require( 'gulp-concat' );
 var uglify = require( 'gulp-uglify' );
+var header = require( 'gulp-header' );
 var jscs = require( 'gulp-jscs' );
 var plato = require( 'plato' );
 var exec = require( 'child_process' ).exec;
+var pkg = require( './package.json' );
 
 var coreFiles = 'src/**/*.js';
 var allFiles = '{test,src}/**/*.js';
+
+function banner() {
+  return [
+    '/**!',
+    ' * <%= pkg.name.replace("@fdaciuk/", "") %> - v<%= pkg.version %>',
+    ' * <%= pkg.description %>',
+    ' * <%= pkg.homepage %>',
+    '',
+    ' * <%= new Date( Date.now() ) %>',
+    ' * <%= pkg.license %> (c) <%= pkg.author %>',
+    '*/',
+    ''
+  ].join( '\n' );
+}
 
 gulp.task( 'lint', function() {
   gulp.src( allFiles )
@@ -30,6 +46,7 @@ gulp.task( 'uglify', function() {
   gulp.src( coreFiles )
     .pipe( concat( 'ajax.min.js' ) )
     .pipe( uglify() )
+    .pipe( header( banner(), { pkg: pkg } ) )
     .pipe( gulp.dest( './dist' ) );
 });
 
