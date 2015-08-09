@@ -112,7 +112,7 @@
   "requireSpacesInForStatement": true,
   "disallowTrailingComma": true,
   "disallowTrailingWhitespace": true,
-  "maximumNumberOfLines": 110,
+  "maximumNumberOfLines": 120,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireDotNotation": true,
   "requireKeywordsOnNewLine": [ "else" ],

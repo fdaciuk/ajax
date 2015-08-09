@@ -14,6 +14,14 @@
       });
     });
 
+    it( 'Should return data about `paulo`', function( done ) {
+      ajax.get( 'http://127.0.0.1:3000/api/user/paulo' )
+      .done(function( response ) {
+        response.name.should.be.equal( 'Paulo Torres' );
+        done();
+      });
+    });
+
     it( 'Should return 404 error', function( done ) {
       ajax.get( 'http://127.0.0.1:3000/api/something' )
       .error(function( response, xhr ) {

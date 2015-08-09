@@ -17,9 +17,9 @@ app.use(function cors( req, res, next ) {
 });
 
 app.use( connectRoute( function routes( router ) {
-  function postRequest( req, res, next ) {
+  function handleRequest( req, res, next ) {
     var userRequested = req.params.slug || req.body.slug;
-    var user = users[ userRequested ];
+    var user = userRequested ? users[ userRequested ] : users;
     if( !user ) {
       res.statusCode = 404;
       user = '404 - Not found';
@@ -28,15 +28,12 @@ app.use( connectRoute( function routes( router ) {
     res.end( JSON.stringify( user ) );
   }
 
-  router.get( '/api/users', function( req, res, next ) {
-    res.setHeader( 'Content-Type', 'application/json' );
-    res.end( JSON.stringify( users ) );
-  });
-
-  router.post( '/api/user', postRequest );
-  router.post( '/api/user/:slug', postRequest );
-  router.put( '/api/user/:slug', postRequest );
-  router.delete( '/api/user/:slug', postRequest );
+  router.get( '/api/users/', handleRequest );
+  router.get( '/api/user/:slug', handleRequest );
+  router.post( '/api/user', handleRequest );
+  router.post( '/api/user/:slug', handleRequest );
+  router.put( '/api/user/:slug', handleRequest );
+  router.delete( '/api/user/:slug', handleRequest );
 }));
 
 app.listen( PORT );
