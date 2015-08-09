@@ -80,24 +80,25 @@ Enjoy ;)
 ```js
 var ajax = new Ajax();
 ajax.get( '/api/users' );
+ajax.get( '/api/users/john' );
 ```
 
 ### `post(url, [ data ])`
 
-> Save a new register.
+> Save a new register or update part of this one.
 
 ```js
 var ajax = new Ajax();
-ajax.post( '/api/users', { data: 'value' });
+ajax.post( '/api/users', { slug: 'john' });
 ```
 
 ### `put(url, [ data ])`
 
-> Upgrade part of a register.
+> Update an entire register.
 
 ```js
 var ajax = new Ajax();
-ajax.put( '/api/users', { slug: 'john' });
+ajax.put( '/api/users', { slug: 'john', age: 37 });
 ```
 
 ### `delete(url, [ data ])`
