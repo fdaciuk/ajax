@@ -2,15 +2,17 @@
   'use strict';
   /* istanbul ignore next */
   if( typeof define === 'function' && define.amd ) {
-    define( 'Ajax', factory );
+    define( 'Ajax', function() {
+      factory(root)
+    });
   }
   else if( typeof exports === 'object' ) {
-    exports = module.exports = factory();
+    exports = module.exports = factory(root);
   }
   else {
-    root.Ajax = factory();
+    root.Ajax = factory(root);
   }
-})(this, function() {
+})(this, function(root) {
   'use strict';
 
   function Ajax() {
@@ -21,6 +23,33 @@
       done: function() {},
       error: function() {},
       always: function() {}
+    };
+
+    $public.jsonp = function jsonp( url ) {
+      var unique = 0;
+      return function(url, callback, context) {
+        // INIT
+        var name = "_jsonp_" + unique++;
+        if (url.match(/\?/) && !url.match(/\&callback=/)) url += "&callback="+name;
+        else url += "?callback="+name;
+
+        // Create script
+        var script = root.document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+
+        // Setup handler
+        root[name] = function(data){
+          callback.call((context || root), data);
+          root.document.getElementsByTagName('head')[0].removeChild(script);
+          script = null;
+          delete root[name];
+        };
+
+        // Load JSON
+        root.document.getElementsByTagName('head')[0].appendChild(script);
+      };
+      // return $private.XHRConnection( 'GET', url, null );
     };
 
     $public.get = function get( url ) {
