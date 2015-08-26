@@ -1,3 +1,13 @@
-!dist/
-**/.*
-**/*
+api/
+coverage/
+plato/
+src/
+test/
+.*
+CONTRIBUTING.md
+LICENSE.md
+ajax-logo.png
+bower.json
+codeclimate.yml
+gulpfile.js
+karma.conf.js
