@@ -23,7 +23,7 @@
   "homepage": "https://github.com/fdaciuk/ajax",
   "scripts": {
     "test": "gulp test",
-    "publish": "npm publish --access=public"
+    "pub": "npm publish --access=public"
   },
   "devDependencies": {
     "body-parser": "^1.13.2",
