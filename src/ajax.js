@@ -47,7 +47,7 @@
     $public.jsonp = function jsonp(url, passedInCallback) {
       var jsonPcallback = function(data) {
         // remove from global scope
-        // delete root.jsonCallback;
+        delete root.jsonCallback;
         return passedInCallback(data);
       };
       // Vanilla
