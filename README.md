@@ -11,7 +11,6 @@
 [![Code Climate][codeclimate-image]][codeclimate-url]
 [![License][license-image]][license-url]
 [![CONTRIBUTING][contributing-image]][contributing-url]
-[![browser support][testling-image]][testling-url]
 
 You can use this module with _AMD_, _CommonJS_ or just like a method of `window` object!
 
@@ -44,7 +43,7 @@ npm i --save @fdaciuk/ajax
 You can just add the following line to your HTML file:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.10/ajax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.11/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -178,5 +177,3 @@ Check [CONTRIBUTING.md][contributing-url]
 [license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
 [contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg?style=flat-square
 [contributing-url]: CONTRIBUTING.md
-[testling-image]: https://ci.testling.com/fdaciuk/ajax.png
-[testling-url]: https://ci.testling.com/fdaciuk/ajax
