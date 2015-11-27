@@ -53,6 +53,7 @@
       var xhr = this;
       var DONE = 4;
       if( xhr.readyState === DONE ) {
+        xhr.removeEventListener( 'readystatechange', $private.ready, false );
         $private.methods.always
           .apply( $private.methods, $private.parseResponse( xhr ) );
         if( xhr.status >= 200 && xhr.status < 300 ) {
