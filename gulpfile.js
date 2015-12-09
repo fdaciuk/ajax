@@ -110,4 +110,4 @@ gulp.task( 'deploy', done => {
   });
 });
 
-gulp.task( 'default', [ 'watch' ]);
+gulp.task( 'default', [ 'webserver', 'watch' ]);
