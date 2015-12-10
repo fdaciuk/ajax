@@ -84,6 +84,7 @@ gulp.task( 'deploy', done => {
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
+    'git tag -f ' + pkg.version,
     'gulp plato',
     'rm -rf .tmp',
     'mkdir .tmp',
