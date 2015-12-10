@@ -43,7 +43,7 @@ npm i --save @fdaciuk/ajax
 You can just add the following line to your HTML file:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.14/ajax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.15/ajax.min.js"></script>
 ```
 
 ## Usage
