@@ -51,8 +51,7 @@
 
     $private.ready = function ready() {
       var xhr = this;
-      var DONE = 4;
-      if( xhr.readyState === DONE ) {
+      if( xhr.readyState === xhr.DONE ) {
         xhr.removeEventListener( 'readystatechange', $private.ready, false );
         $private.methods.always
           .apply( $private.methods, $private.parseResponse( xhr ) );
