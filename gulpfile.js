@@ -108,7 +108,7 @@ gulp.task( 'deploy', done => {
     if( stdout ) console.log( 'STDOUT:', stdout );
     if( stderr ) console.log( 'STDERR:', stderr );
     if( err ) console.log( 'ERROR:', err );
-    process.exit(1);
+    process.exit(0);
     done();
   });
 });
