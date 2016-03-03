@@ -1,18 +1,18 @@
 'use strict';
 
-let gulp = require( 'gulp' );
-let karma = require( 'karma' ).server;
-let jshint = require( 'gulp-jshint' );
-let concat = require( 'gulp-concat' );
-let uglify = require( 'gulp-uglify' );
-let header = require( 'gulp-header' );
-let jscs = require( 'gulp-jscs' );
-let plato = require( 'plato' );
-let exec = require( 'child_process' ).exec;
-let pkg = require( './package.json' );
+const gulp = require( 'gulp' );
+const Server = require( 'karma' ).Server;
+const jshint = require( 'gulp-jshint' );
+const concat = require( 'gulp-concat' );
+const uglify = require( 'gulp-uglify' );
+const header = require( 'gulp-header' );
+const jscs = require( 'gulp-jscs' );
+const plato = require( 'plato' );
+const exec = require( 'child_process' ).exec;
+const pkg = require( './package.json' );
 
-let coreFiles = 'src/**/*.js';
-let allFiles = '{test,src}/**/*.js';
+const coreFiles = 'src/**/*.js';
+const allFiles = '{test,src}/**/*.js';
 
 function banner() {
   return [
@@ -36,7 +36,7 @@ gulp.task( 'lint', () => {
   gulp.src( allFiles )
     .pipe( jscs() )
     .on( 'error', err => {
-      let ERROR_CODE = 1;
+      const ERROR_CODE = 1;
       console.log( err.toString() );
       process.exit( ERROR_CODE );
     });
@@ -51,10 +51,11 @@ gulp.task( 'uglify', () => {
 });
 
 gulp.task( 'test', done => {
-  karma.start({
+  const server = new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done );
+  server.start();
 });
 
 gulp.task( 'webserver', done => {
@@ -66,21 +67,21 @@ gulp.task( 'webserver', done => {
 });
 
 gulp.task( 'watch', [ 'test', 'lint' ], () => {
-  gulp.watch( '{test,src}/**/*.js', [ 'test', 'lint' ]);
+  gulp.watch( allFiles, [ 'test', 'lint' ]);
 });
 
 gulp.task( 'plato', done => {
-  let files = [ coreFiles ];
-  let outputDir = './plato';
-  let options = { title: '#Ajax' };
-  function callback( report ) { done(); };
+  const files = [ coreFiles ];
+  const outputDir = './plato';
+  const options = { title: '#Ajax' };
+  const callback = (report) => done();
   plato.inspect( files, outputDir, options, callback );
 });
 
 gulp.task( 'deploy', done => {
   console.log( 'Deploying...' );
-  let date = new Date( Date.now() );
-  let commands = [
+  const date = new Date( Date.now() );
+  const commands = [
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
