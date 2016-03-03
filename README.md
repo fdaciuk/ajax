@@ -43,7 +43,7 @@ npm i --save @fdaciuk/ajax
 You can just add the following line to your HTML file:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.11/ajax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.0.15/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -120,9 +120,46 @@ ajax.delete( '/api/users', { id: 1 });
 
 ## Return methods
 
+### `then(response, xhrObject)`
+
+> Promise that returns if the request was successful.
+
+```js
+var ajax = new Ajax();
+ajax.get( '/api/users' ).then(function( response, xhr ) {
+  // Do something
+});
+```
+
+### `catch(response, xhrObject)`
+
+> Promise that returns if the request has an error.
+
+```js
+var ajax = new Ajax();
+ajax.post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
+  // Do something
+});
+```
+
+### `always(response, xhrObject)`
+
+> That promise always returns, independent if the status is `done` or `error`.
+
+```js
+var ajax = new Ajax();
+ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
+  // Do something
+});
+```
+
+## Deprecated return methods
+
 ### `done(response, xhrObject)`
 
 > Promise that returns if the request was successful.
+
+_`done` is deprecated. Use `then` instead._
 
 ```js
 var ajax = new Ajax();
@@ -135,20 +172,11 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 
 > Promise that returns if the request has an error.
 
+_`error` is deprecated. Use `catch` instead._
+
 ```js
 var ajax = new Ajax();
 ajax.post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
-  // Do something
-});
-```
-
-### `always(response, xhrObject)`
-
-> That promise always returns, independent if the status is `done` or `error`.
-
-```js
-var ajax = new Ajax();
-ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
   // Do something
 });
 ```

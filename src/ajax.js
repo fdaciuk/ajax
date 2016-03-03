@@ -18,9 +18,17 @@
     var $private = {};
 
     $private.methods = {
-      done: function() {},
-      error: function() {},
-      always: function() {}
+      then: function() {},
+      catch: function() {},
+      always: function() {},
+
+      // @deprecated
+      done: function() {
+        console.warn('`done` is deprecated and will be removed in v2.0.0. Use `then` instead.');
+      },
+      error: function() {
+        console.warn('`error` is deprecated and will be removed in v2.0.0. Use `catch` instead.');
+      }
     };
 
     $public.get = function get( url ) {
@@ -51,16 +59,24 @@
 
     $private.ready = function ready() {
       var xhr = this;
-      var DONE = 4;
-      if( xhr.readyState === DONE ) {
+      if( xhr.readyState === xhr.DONE ) {
+        xhr.removeEventListener( 'readystatechange', $private.ready, false );
         $private.methods.always
           .apply( $private.methods, $private.parseResponse( xhr ) );
         if( xhr.status >= 200 && xhr.status < 300 ) {
-          return $private.methods.done
+          $private.methods.then
             .apply( $private.methods, $private.parseResponse( xhr ) );
+          // @deprecated
+          $private.methods.done
+            .apply( $private.methods, $private.parseResponse( xhr ) );
+        } else {
+          $private.methods.catch
+            .apply( $private.methods, $private.parseResponse( xhr ) );
+          // @deprecated
+          $private.methods.error
+            .apply( $private.methods, $private.parseResponse( xhr ) );
+
         }
-        $private.methods.error
-          .apply( $private.methods, $private.parseResponse( xhr ) );
       }
     };
 
@@ -81,7 +97,8 @@
 
     $private.generatePromise = function generatePromise( method ) {
       return function( callback ) {
-        return ( $private.methods[ method ] = callback, this );
+        $private.methods[ method ] = callback;
+        return this;
       };
     };
 
