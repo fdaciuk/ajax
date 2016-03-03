@@ -5,11 +5,19 @@
     var ajax = new Ajax();
     var postRequest = ajax.post();
 
-    it( 'Should `post` method return `done` method', function() {
+    it('Should `post` method return `then` method', function () {
+      postRequest.should.have.property('then');
+    });
+
+    it('Should `post` method return `catch` method', function () {
+      postRequest.should.have.property('catch');
+    });
+
+    it( 'DEPRECATED - Should `post` method return `done` method', function() {
       postRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `post` method return `error` method', function() {
+    it( 'DEPRECATED - Should `post` method return `error` method', function() {
       postRequest.should.have.property( 'error' );
     });
 

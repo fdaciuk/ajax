@@ -5,15 +5,23 @@
     var ajax = new Ajax();
     var deleteRequest = ajax.delete();
 
-    it( 'Should `delete` method return `done` method', function() {
+    it('Should `delete` method return `then` method', function () {
+      deleteRequest.should.have.property('then');
+    });
+
+    it('Should `delete` method return `catch` method', function () {
+      deleteRequest.should.have.property('catch');
+    });
+
+    it( 'DEPRECATED - Should `delete` method return `done` method', function() {
       deleteRequest.should.have.property( 'done' );
     });
 
-    it( 'Should `delete` method return `error` method', function() {
+    it( 'DEPRECATED - Should `delete` method return `error` method', function() {
       deleteRequest.should.have.property( 'error' );
     });
 
-    it( 'Should `delete` method return `always` method', function() {
+   it( 'Should `delete` method return `always` method', function() {
       deleteRequest.should.have.property( 'always' );
     });
   });
