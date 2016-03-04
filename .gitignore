@@ -4,3 +4,4 @@ report
 plato
 .tmp
 npm-debug.log
+test/manual

@@ -23,12 +23,8 @@
       always: function() {},
 
       // @deprecated
-      done: function() {
-        console.warn('`done` is deprecated and will be removed in v2.0.0. Use `then` instead.');
-      },
-      error: function() {
-        console.warn('`error` is deprecated and will be removed in v2.0.0. Use `catch` instead.');
-      }
+      done: function() {},
+      error: function() {}
     };
 
     $public.get = function get( url ) {
@@ -75,7 +71,6 @@
           // @deprecated
           $private.methods.error
             .apply( $private.methods, $private.parseResponse( xhr ) );
-
         }
       }
     };
@@ -89,17 +84,29 @@
 
     $private.promises = function promises() {
       var allPromises = {};
-      Object.keys( $private.methods ).forEach(function( promise ) {
-        allPromises[ promise ] = $private.generatePromise.call( this, promise );
+      Object.keys( $private.methods ).forEach(function( method ) {
+        allPromises[ method ] = $private.generatePromise.call( this, method );
       }, this );
       return allPromises;
     };
 
     $private.generatePromise = function generatePromise( method ) {
       return function( callback ) {
+        $private.generateDeprecatedMessage(method);
         $private.methods[ method ] = callback;
         return this;
       };
+    };
+
+    $private.generateDeprecatedMessage = function generateDeprecatedMessage(method) {
+      var deprecatedMessage = '@fdaciuk/ajax: `%s` is deprecated and will be removed in v2.0.0. Use `%s` instead.';
+      switch (method) {
+        case 'done':
+          console.warn(deprecatedMessage, 'done', 'then');
+          break;
+        case 'error':
+          console.warn(deprecatedMessage, 'error', 'catch');
+      }
     };
 
     $private.objectToQueryString = function objectToQueryString( data ) {
