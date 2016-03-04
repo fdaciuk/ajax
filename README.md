@@ -40,10 +40,20 @@ npm i --save @fdaciuk/ajax
 
 ### CDN
 
-You can just add the following line to your HTML file:
+You may use a CDN to get the latest version.
+
+**CDNJS:**
+
+```console
+https://cdnjs.com/libraries/fdaciuk-ajax
+```
+
+**GitHub:**
+
+Or you may just add the following line to your HTML file:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fdaciuk-ajax/0.1.1/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.1.2/dist/ajax.min.js"></script>
 ```
 
 ## Usage
