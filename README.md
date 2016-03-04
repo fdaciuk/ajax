@@ -1,4 +1,5 @@
 # Ajax
+
 > Ajax module in Vanilla JS
 
 <p align="center">
@@ -53,7 +54,7 @@ https://cdnjs.com/libraries/fdaciuk-ajax
 Or you may just add the following line to your HTML file:
 
 ```html
-<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.1.2/dist/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.0/dist/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -87,7 +88,36 @@ or
 var ajax = new Ajax();
 ```
 
+### Note
+
+`Ajax` constructor is deprecated and will be removed in `v2.0.0`. Use `ajax()` function (lowecase version) without `new` keyword instead.
+
 Enjoy ;)
+
+## Signature
+
+```js
+ajax([options])
+```
+
+## Options
+
+Optional object with request options. See all options below.
+
+**headers**
+
+An object when `key` is a header name, and `value` is a header value.
+
+```js
+ajax({
+  headers: {
+    'content-type': 'application/json',
+    'x-access-token': '123@abc'
+  }
+})
+```
+
+If `content-type` is not passed, `application/x-www-form-urlencoded` will be used.
 
 ## Methods
 
@@ -96,9 +126,8 @@ Enjoy ;)
 > Get data as a JSON object.
 
 ```js
-var ajax = new Ajax();
-ajax.get( '/api/users' );
-ajax.get( '/api/users/john' );
+ajax().get( '/api/users' );
+ajax().get( '/api/users/john' );
 ```
 
 ### `post(url, [ data ])`
@@ -106,8 +135,18 @@ ajax.get( '/api/users/john' );
 > Save a new register or update part of this one.
 
 ```js
-var ajax = new Ajax();
-ajax.post( '/api/users', { slug: 'john' });
+// Without headers
+ajax().post( '/api/users', { slug: 'john' });
+
+// With headers
+var request = ajax({
+  headers: {
+    'x-access-token': '123@abc',
+    'username': 'user',
+    'password': 'b4d45$'
+  }
+});
+request.post('/login');
 ```
 
 ### `put(url, [ data ])`
@@ -115,8 +154,7 @@ ajax.post( '/api/users', { slug: 'john' });
 > Update an entire register.
 
 ```js
-var ajax = new Ajax();
-ajax.put( '/api/users', { slug: 'john', age: 37 });
+ajax().put( '/api/users', { slug: 'john', age: 37 });
 ```
 
 ### `delete(url, [ data ])`
@@ -124,8 +162,7 @@ ajax.put( '/api/users', { slug: 'john', age: 37 });
 > Delete a register.
 
 ```js
-var ajax = new Ajax();
-ajax.delete( '/api/users', { id: 1 });
+ajax().delete( '/api/users', { id: 1 });
 ```
 
 ## Return methods
@@ -135,8 +172,7 @@ ajax.delete( '/api/users', { id: 1 });
 > Promise that returns if the request was successful.
 
 ```js
-var ajax = new Ajax();
-ajax.get( '/api/users' ).then(function( response, xhr ) {
+ajax().get( '/api/users' ).then(function( response, xhr ) {
   // Do something
 });
 ```
@@ -146,8 +182,7 @@ ajax.get( '/api/users' ).then(function( response, xhr ) {
 > Promise that returns if the request has an error.
 
 ```js
-var ajax = new Ajax();
-ajax.post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
+ajax().post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
   // Do something
 });
 ```
@@ -157,8 +192,7 @@ ajax.post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
 > That promise always returns, independent if the status is `done` or `error`.
 
 ```js
-var ajax = new Ajax();
-ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
+ajax().post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
   // Do something
 });
 ```
@@ -172,8 +206,7 @@ ajax.post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
 _`done` is deprecated. Use `then` instead._
 
 ```js
-var ajax = new Ajax();
-ajax.get( '/api/users' ).done(function( response, xhr ) {
+ajax().get( '/api/users' ).done(function( response, xhr ) {
   // Do something
 });
 ```
@@ -185,8 +218,7 @@ ajax.get( '/api/users' ).done(function( response, xhr ) {
 _`error` is deprecated. Use `catch` instead._
 
 ```js
-var ajax = new Ajax();
-ajax.post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
+ajax().post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
   // Do something
 });
 ```
