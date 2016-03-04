@@ -6,15 +6,12 @@ var PORT = 3000;
 
 var connectRoute = require( 'connect-route' );
 var bodyParser = require( 'body-parser' );
+var cors = require('cors');
 var users = require( './data/users' );
 
-app.use( bodyParser.urlencoded({ extended: false }) );
+app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( bodyParser.json() );
-
-app.use(function cors( req, res, next ) {
-  res.setHeader( 'Access-Control-Allow-Origin', '*' );
-  next();
-});
+app.use(cors());
 
 app.use( connectRoute( function routes( router ) {
   function handleRequest( req, res, next ) {
@@ -28,7 +25,7 @@ app.use( connectRoute( function routes( router ) {
     res.end( JSON.stringify( user ) );
   }
 
-  router.get( '/api/users/', handleRequest );
+  router.get( '/api/users', handleRequest );
   router.get( '/api/user/:slug', handleRequest );
   router.post( '/api/user', handleRequest );
   router.post( '/api/user/:slug', handleRequest );

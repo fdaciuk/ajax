@@ -59,10 +59,12 @@ gulp.task( 'test', done => {
 });
 
 gulp.task( 'webserver', done => {
-  require( './api/app' );
-  exec( 'pkill -9 python && python -m SimpleHTTPServer 9001', () => {
-    console.log( 'Server listen on port 9001' );
-    done();
+  exec('lsof -t -i tcp:3000 | xargs kill && lsof -t -i tcp:9001 | xargs kill', () => {
+    require( './api/app' );
+    exec( 'python -m SimpleHTTPServer 9001', () => {
+      console.log( 'Server listen on port 9001' );
+      done();
+    });
   });
 });
 
