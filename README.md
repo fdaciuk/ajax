@@ -54,7 +54,7 @@ https://cdnjs.com/libraries/fdaciuk-ajax
 Or you may just add the following line to your HTML file:
 
 ```html
-<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.0/dist/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.1/dist/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -141,12 +141,10 @@ ajax().post( '/api/users', { slug: 'john' });
 // With headers
 var request = ajax({
   headers: {
-    'x-access-token': '123@abc',
-    'username': 'user',
-    'password': 'b4d45$'
+    'x-access-token': '123@abc'
   }
 });
-request.post('/login');
+request.post('/login', { username: 'user', password: 'b4d45$' });
 ```
 
 ### `put(url, [ data ])`
