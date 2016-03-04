@@ -101,6 +101,7 @@ gulp.task( 'deploy', done => {
     'git merge dev',
     'git push origin master --tags',
     'git checkout dev',
+    'git push origin dev --tags',
     'npm run pub'
   ];
   exec( commands.join( ' && ' ), ( err, stdout, stderr ) => {
