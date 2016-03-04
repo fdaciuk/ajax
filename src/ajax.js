@@ -43,6 +43,26 @@
       return $private.XHRConnection( 'DELETE', url, data );
     };
 
+    $public.patch = function patch (url, data) {
+      return $private.XHRConnection('PATCH', url, data);
+    };
+
+    $public.lock = function lock (url, data) {
+      return $private.XHRConnection('LOCK', url, data);
+    };
+
+    $public.unlock = function unlock (url, data) {
+      return $private.XHRConnection('UNLOCK', url, data);
+    };
+
+    $public.link = function link (url, data) {
+      return $private.XHRConnection('LINK', url, data);
+    };
+
+    $public.unlink = function unlink (url, data) {
+      return $private.XHRConnection('UNLINK', url, data);
+    };
+
     $private.XHRConnection = function XHRConnection( type, url, data ) {
       var xhr = new XMLHttpRequest();
       var contentType = 'application/x-www-form-urlencoded';
