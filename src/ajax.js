@@ -2,20 +2,29 @@
   'use strict';
   /* istanbul ignore next */
   if( typeof define === 'function' && define.amd ) {
-    define( 'Ajax', factory );
+    define( 'ajax', factory );
   }
   else if( typeof exports === 'object' ) {
     exports = module.exports = factory();
   }
   else {
     root.Ajax = factory();
+    root.ajax = factory();
   }
 })(this, function() {
   'use strict';
 
-  function Ajax() {
+  function Ajax(options) {
     var $public = {};
     var $private = {};
+
+    if(this !== undefined) {
+      console.warn('Instance with `new` is deprecated. This will be removed in `v2.0.0` version.');
+    }
+
+    if(this instanceof Ajax) {
+      console.warn('Ajax constructor is deprecated. This will be removed in `v2.0.0`. Use ajax (lowercase version) without `new` keyword instead');
+    }
 
     $private.methods = {
       then: function() {},
@@ -27,30 +36,49 @@
       error: function() {}
     };
 
+    options = options || {};
+
     $public.get = function get( url ) {
-      return $private.XHRConnection( 'GET', url, null );
+      return $private.XHRConnection( 'GET', url, null, options );
     };
 
     $public.post = function post( url, data ) {
-      return $private.XHRConnection( 'POST', url, data );
+      return $private.XHRConnection( 'POST', url, data, options );
     };
 
     $public.put = function put( url, data ) {
-      return $private.XHRConnection( 'PUT', url, data );
+      return $private.XHRConnection( 'PUT', url, data, options );
     };
 
     $public.delete = function del( url, data ) {
-      return $private.XHRConnection( 'DELETE', url, data );
+      return $private.XHRConnection( 'DELETE', url, data, options );
     };
 
-    $private.XHRConnection = function XHRConnection( type, url, data ) {
+    $private.XHRConnection = function XHRConnection( type, url, data, options ) {
       var xhr = new XMLHttpRequest();
-      var contentType = 'application/x-www-form-urlencoded';
       xhr.open( type, url || '', true );
-      xhr.setRequestHeader( 'Content-Type', contentType );
+      $private.setHeaders(xhr, options.headers);
       xhr.addEventListener( 'readystatechange', $private.ready, false );
       xhr.send( $private.objectToQueryString( data ) );
       return $private.promises();
+    };
+
+    $private.setHeaders = function setHeaders(xhr, headers) {
+      headers = headers || {};
+
+      if(!$private.hasContentType(headers)) {
+        headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      }
+
+      Object.keys(headers).forEach(function(name) {
+        xhr.setRequestHeader(name, headers[name]);
+      });
+    };
+
+    $private.hasContentType = function hasContentType(headers) {
+      return Object.keys(headers).some(function(name) {
+        return name.toLowerCase() === 'content-type';
+      });
     };
 
     $private.ready = function ready() {
