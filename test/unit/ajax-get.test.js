@@ -65,7 +65,9 @@
       })
 
     it('Should accept headers', function (done) {
-      var request = ajax({ headers: { 'content-type': 'application/json' }})
+      var request = ajax({
+        headers: { 'content-type': 'application/json' }
+      })
       request.get('http://localhost:3000/api/users')
         .then(function (response) {
           response.should.be.an('object')
