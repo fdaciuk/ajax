@@ -74,5 +74,17 @@
           done()
         })
     })
+
+    it('Should pass method on ajax function', function (done) {
+      var request = ajax({
+        method: 'get',
+        url: 'http://localhost:3000/api/users'
+      })
+
+      request.then(function (response) {
+        response.should.be.an('object')
+        done()
+      })
+    })
   })
 })(window.chai.should(), window.chai.expect, window.Ajax, window.ajax)

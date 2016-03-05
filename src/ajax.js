@@ -160,6 +160,15 @@
       return Object.prototype.toString.call(data) === '[object Object]'
     }
 
+    if (options.method && options.url) {
+      return $private.XHRConnection(
+        options.method,
+        options.url,
+        options.data || null,
+        options
+      )
+    }
+
     return $public
   }
 

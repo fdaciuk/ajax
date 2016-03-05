@@ -54,7 +54,7 @@ https://cdnjs.com/libraries/fdaciuk-ajax
 Or you may just add the following line to your HTML file:
 
 ```html
-<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.3/dist/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v1.0.0/dist/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -97,6 +97,26 @@ ajax([options])
 
 Optional object with request options. See all options below.
 
+**HTTP Methods**
+
+You may pass any HTTP method as you want, using `method` property:
+
+```js
+var request = ajax({
+  method: 'options',
+  url: '/api/users',
+  data: {
+    user: 'john'
+  }
+});
+
+request.then(function(response) {...});
+```
+
+For using this kind of request, you must pass `url` property.
+
+The property `data` is optional, but may used to pass any data via `body` on request.
+
 **headers**
 
 An object when `key` is a header name, and `value` is a header value.
@@ -113,6 +133,8 @@ ajax({
 If `content-type` is not passed, `application/x-www-form-urlencoded` will be used.
 
 ## Methods
+
+You may use any of this methods, instead the above approach:
 
 ### `get(url)`
 
