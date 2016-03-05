@@ -54,7 +54,7 @@
 
     $private.httpMethods.forEach(function (method) {
       $public[method] = function (url, data) {
-        return $private.XHRConnection(
+        return $private.xhrConnection(
           method,
           url,
           $private.maybeData(data),
@@ -63,7 +63,7 @@
       }
     })
 
-    $private.XHRConnection = function XHRConnection (type, url, data, options) {
+    $private.xhrConnection = function xhrConnection (type, url, data, options) {
       var xhr = new XMLHttpRequest()
       xhr.open(type, url || '', true)
       $private.setHeaders(xhr, options.headers)
@@ -170,7 +170,7 @@
     }
 
     if (options.method && options.url) {
-      return $private.XHRConnection(
+      return $private.xhrConnection(
         options.method,
         options.url,
         $private.maybeData(options.data),
