@@ -104,7 +104,11 @@
 
     $private.parseResponse = function parseResponse (xhr) {
       var result
-      try { result = JSON.parse(xhr.responseText); } catch(e ) { result = xhr.responseText; }
+      try {
+        result = JSON.parse(xhr.responseText)
+      } catch(e) {
+        result = xhr.responseText
+      }
       return [ result, xhr ]
     }
 
@@ -143,8 +147,11 @@
 
     $private.getQueryString = function getQueryString (object) {
       return Object.keys(object).map(function (item) {
-        return encodeURIComponent(item)
-        + '=' + encodeURIComponent(object[ item ])
+        return [
+          encodeURIComponent(item),
+          '=',
+          encodeURIComponent(object[ item ])
+        ].join('')
       }).join('&')
     }
 

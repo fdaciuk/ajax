@@ -10,34 +10,55 @@
 
 You need to install `gulp`, `mocha`, `karma-cli` and `istanbul` globally:
 
-```sh
+```console
 [sudo] npm i -g gulp mocha istanbul karma-cli
 ```
 
 After that, you need to install local modules:
 
-```sh
+```console
 npm i
 ```
 
 Then, you can start the webserver and execute tests with the following command:
 
-```sh
-gulp
+```console
+npm run watch
 ```
 
 - Write tests for your feature;
 
 When you're ready, continue with next steps:
 
-- Run `gulp webserver test lint` to run tests and assure that the code has no lint errors;
+- Assure that the code has no lint errors;
+- If some error was displayed, execute `npm run format` to fix it;
 - Add your changes: `git add .`;
 - Commit your changes: `git commit -m 'Add some feature'`;
 - Push to the branch: `git push origin my-new-feature`;
-- Submit a pull request for `dev` branch :D
+- Submit a pull request for `dev` branch, and summon `@fdaciuk` :D
 
 ## Tips
 
 - Send only one feature for Pull Request;
 - Send small Pull Requests;
 - Write tests for all features.
+
+## Build steps
+
+> If you are sending a pull request, you don't need run this commands.
+
+With the latest code version on `dev` branch, it will be executed the following steps:
+
+On `dev` branch:
+
+1. Update CDN version on `README.md`, with next version;
+2. Run this commands:
+
+```console
+git pull origin dev --force
+npm run build:<version>
+```
+
+`<version>` may be `patch`, `minor` ou `major`.
+
+And done ;)
