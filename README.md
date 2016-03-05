@@ -21,7 +21,7 @@ You can use this module with _AMD_, _CommonJS_ or just like a method of `window`
 
 You can install via bower:
 
-```sh
+```console
 bower install ajax
 ```
 
@@ -35,7 +35,7 @@ Just download `dist/ajax.min.js` file, and add `dist/ajax.min.js` on your HTML f
 
 ### CommonJS (via NPM)
 
-```sh
+```console
 npm i --save @fdaciuk/ajax
 ```
 
@@ -54,7 +54,7 @@ https://cdnjs.com/libraries/fdaciuk-ajax
 Or you may just add the following line to your HTML file:
 
 ```html
-<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.1/dist/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v0.2.2/dist/ajax.min.js"></script>
 ```
 
 ## Usage
@@ -62,8 +62,8 @@ Or you may just add the following line to your HTML file:
 ### AMD
 
 ```js
-define([ 'Ajax' ], function( Ajax ) {
-  var ajax = new Ajax();
+define([ 'ajax' ], function( ajax ) {
+  ajax().get(...)
   ...
 });
 ```
@@ -71,29 +71,22 @@ define([ 'Ajax' ], function( Ajax ) {
 ### CommonJS
 
 ```js
-var Ajax = require( '@fdaciuk/ajax' );
-var ajax = new Ajax();
+var ajax = require( '@fdaciuk/ajax' );
+ajax().post(...);
 ...
 ```
 
 #### Method of `window` object
 
 ```js
-var ajax = new window.Ajax();
+window.ajax().get(...);
 ```
 
-or
+or just
 
 ```js
-var ajax = new Ajax();
+ajax().get(...);
 ```
-
-### Note
-
-`Ajax` constructor is deprecated and will be removed in `v2.0.0`. Use `ajax()` function (lowecase version) without `new` keyword instead.
-
-Enjoy ;)
-
 ## Signature
 
 ```js
@@ -126,17 +119,16 @@ If `content-type` is not passed, `application/x-www-form-urlencoded` will be use
 > Get data as a JSON object.
 
 ```js
-ajax().get( '/api/users' );
-ajax().get( '/api/users/john' );
+ajax().get('/api/users');
 ```
 
-### `post(url, [ data ])`
+### `post(url, [data])`
 
 > Save a new register or update part of this one.
 
 ```js
 // Without headers
-ajax().post( '/api/users', { slug: 'john' });
+ajax().post('/api/users', { slug: 'john' });
 
 // With headers
 var request = ajax({
@@ -147,20 +139,20 @@ var request = ajax({
 request.post('/login', { username: 'user', password: 'b4d45$' });
 ```
 
-### `put(url, [ data ])`
+### `put(url, [data])`
 
 > Update an entire register.
 
 ```js
-ajax().put( '/api/users', { slug: 'john', age: 37 });
+ajax().put('/api/users', { slug: 'john', age: 37 });
 ```
 
-### `delete(url, [ data ])`
+### `delete(url, [data])`
 
 > Delete a register.
 
 ```js
-ajax().delete( '/api/users', { id: 1 });
+ajax().delete('/api/users', { id: 1 });
 ```
 
 ## Return methods
@@ -170,17 +162,17 @@ ajax().delete( '/api/users', { id: 1 });
 > Promise that returns if the request was successful.
 
 ```js
-ajax().get( '/api/users' ).then(function( response, xhr ) {
+ajax().get('/api/users').then(function(response, xhr) {
   // Do something
 });
 ```
 
-### `catch(response, xhrObject)`
+### `catch(responseError, xhrObject)`
 
 > Promise that returns if the request has an error.
 
 ```js
-ajax().post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
+ajax().post('/api/users', { slug: 'john' }).catch(function(response, xhr) {
   // Do something
 });
 ```
@@ -190,36 +182,14 @@ ajax().post( '/api/users', { slug: 'john' }).catch(function( response, xhr ) {
 > That promise always returns, independent if the status is `done` or `error`.
 
 ```js
-ajax().post( '/api/users', { slug: 'john' }).always(function( response, xhr ) {
+ajax().post('/api/users', { slug: 'john' }).always(function(response, xhr) {
   // Do something
 });
 ```
 
-## Deprecated return methods
+## Deprecated methods
 
-### `done(response, xhrObject)`
-
-> Promise that returns if the request was successful.
-
-_`done` is deprecated. Use `then` instead._
-
-```js
-ajax().get( '/api/users' ).done(function( response, xhr ) {
-  // Do something
-});
-```
-
-### `error(response, xhrObject)`
-
-> Promise that returns if the request has an error.
-
-_`error` is deprecated. Use `catch` instead._
-
-```js
-ajax().post( '/api/users', { slug: 'john' }).error(function( response, xhr ) {
-  // Do something
-});
-```
+You may be deprecated methods [here][deprecated]
 
 ## Contributing
 
@@ -245,3 +215,4 @@ Check [CONTRIBUTING.md][contributing-url]
 [license-url]: https://github.com/fdaciuk/licenses/blob/master/MIT-LICENSE.md
 [contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg?style=flat-square
 [contributing-url]: CONTRIBUTING.md
+[deprecated]: deprecated.md
