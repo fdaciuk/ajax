@@ -15,16 +15,25 @@
   'use strict'
 
   function Ajax (options) {
-    var $public = {}
-    var $private = {}
-
     if (this !== undefined) {
-      console.warn('Instance with `new` is deprecated. This will be removed in `v2.0.0` version.')
+      console.warn([
+        'Instance with `new` is deprecated. ',
+        'This will be removed in `v2.0.0` version.'
+      ].join(''))
     }
 
     if (this instanceof Ajax) {
-      console.warn('Ajax constructor is deprecated. This will be removed in `v2.0.0`. Use ajax (lowercase version) without `new` keyword instead')
+      console.warn([
+        'Ajax constructor is deprecated. This will be removed in ',
+        '`v2.0.0`. Use ajax (lowercase version) without `new` ',
+        'keyword instead'
+      ].join(''))
     }
+
+    options = options || {}
+
+    var $public = {}
+    var $private = {}
 
     $private.methods = {
       then: function () {},
@@ -33,26 +42,26 @@
 
       // @deprecated
       done: function () {},
+      // @deprecated
       error: function () {}
     }
 
-    options = options || {}
-
-    $public.get = function get (url) {
-      return $private.XHRConnection('GET', url, null, options)
+    $private.maybeData = function maybeData (data) {
+      return data || null
     }
 
-    $public.post = function post (url, data) {
-      return $private.XHRConnection('POST', url, data, options)
-    }
+    $private.httpMethods = ['get', 'post', 'put', 'delete']
 
-    $public.put = function put (url, data) {
-      return $private.XHRConnection('PUT', url, data, options)
-    }
-
-    $public.delete = function del (url, data) {
-      return $private.XHRConnection('DELETE', url, data, options)
-    }
+    $private.httpMethods.forEach(function (method) {
+      $public[method] = function (url, data) {
+        return $private.XHRConnection(
+          method,
+          url,
+          $private.maybeData(data),
+          options
+        )
+      }
+    })
 
     $private.XHRConnection = function XHRConnection (type, url, data, options) {
       var xhr = new XMLHttpRequest()
@@ -164,7 +173,7 @@
       return $private.XHRConnection(
         options.method,
         options.url,
-        options.data || null,
+        $private.maybeData(options.data),
         options
       )
     }
