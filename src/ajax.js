@@ -3,8 +3,7 @@
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define('ajax', factory)
-  }
-  else if (typeof exports === 'object') {
+  } else if (typeof exports === 'object') {
     exports = module.exports = factory()
   } else {
     // @deprecated
@@ -108,7 +107,7 @@
       var result
       try {
         result = JSON.parse(xhr.responseText)
-      } catch(e) {
+      } catch (e) {
         result = xhr.responseText
       }
       return [ result, xhr ]
@@ -158,7 +157,16 @@
     }
 
     $private.isObject = function isObject (data) {
-      return '[object Object]' === Object.prototype.toString.call(data)
+      return Object.prototype.toString.call(data) === '[object Object]'
+    }
+
+    if (options.method && options.url) {
+      return $private.XHRConnection(
+        options.method,
+        options.url,
+        options.data || null,
+        options
+      )
     }
 
     return $public

@@ -6,6 +6,7 @@
   "scripts": {
     "test": "gulp test",
     "watch": "gulp",
+    "lint": "gulp lint",
     "format": "standard-format -w",
     "deploy": "gulp deploy",
     "build:patch": "npm version patch && npm run deploy",
@@ -31,6 +32,15 @@
     "url": "https://github.com/fdaciuk/ajax/issues"
   },
   "homepage": "https://github.com/fdaciuk/ajax",
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "beforeEach",
+      "define",
+      "XMLHttpRequest"
+    ]
+  },
   "devDependencies": {
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
