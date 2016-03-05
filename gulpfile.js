@@ -76,6 +76,7 @@ gulp.task('deploy', done => {
   console.log('Deploying...')
   const date = new Date(Date.now())
   const commands = [
+    'git pull origin dev --force',
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
