@@ -7,7 +7,9 @@
   else if (typeof exports === 'object') {
     exports = module.exports = factory()
   } else {
+    // @deprecated
     root.Ajax = factory()
+
     root.ajax = factory()
   }
 })(this, function () {
