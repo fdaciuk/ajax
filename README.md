@@ -21,7 +21,7 @@ You can use this module with _AMD_, _CommonJS_ or just like a method of `window`
 
 You can install via bower:
 
-```sh
+```console
 bower install ajax
 ```
 
@@ -35,7 +35,7 @@ Just download `dist/ajax.min.js` file, and add `dist/ajax.min.js` on your HTML f
 
 ### CommonJS (via NPM)
 
-```sh
+```console
 npm i --save @fdaciuk/ajax
 ```
 
