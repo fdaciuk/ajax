@@ -89,10 +89,9 @@ gulp.task('update-readme', (done) => {
 })
 
 gulp.task('deploy', done => {
-  console.log('Deploying...')
   const date = new Date(Date.now())
   const execCommand = (command, message) => {
-    console.log(message)
+    console.log(`- ${message}`)
     return new Promise((resolve, reject) => {
       exec(command.join(' && '), (err, stdout, stderr) => {
         if (err) return reject(err)
@@ -140,9 +139,9 @@ gulp.task('deploy', done => {
   execCommand(syncRepository, 'Sync repository...')
     .then(() => execCommand(createNewVersion, 'Create new Version...'))
     .then(() => execCommand(generateReports, 'Generate reports...'))
-    .then(() => execCommand(updateMainBranch, 'Update main branch'))
+    .then(() => execCommand(updateMainBranch, 'Update master branch...'))
     .then(() => execCommand(updateDevBranch, 'Update dev branch...'))
-    .then(() => execCommand(npmPublish, 'NPM Publish...'))
+    .then(() => execCommand(npmPublish, 'Publish on NPM...'))
     .then(() => {
       console.log('Done!')
       process.exit(0)
