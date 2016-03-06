@@ -1,5 +1,6 @@
 'use strict'
 
+const fs = require('fs')
 const gulp = require('gulp')
 const Server = require('karma').Server
 const concat = require('gulp-concat')
@@ -72,6 +73,21 @@ gulp.task('plato', done => {
   plato.inspect(files, outputDir, options, callback)
 })
 
+gulp.task('update-readme', (done) => {
+  fs.readFile('README.md', 'utf8', (err, file) => {
+    const github = file.split('\n').reduce((acc, line) => {
+      const versionLine = line.includes('//cdn.rawgit.com/fdaciuk/ajax')
+      let newLine = line
+      if (versionLine) {
+        newLine = line.replace(/\/v([\d.]+)\//, `/v${pkg.version}/`)
+      }
+      return acc.concat(newLine)
+    }, [])
+
+    fs.writeFile('README.md', updateVersion.join('\n'), done)
+  })
+})
+
 gulp.task('deploy', done => {
   console.log('Deploying...')
   const date = new Date(Date.now())
@@ -80,7 +96,6 @@ gulp.task('deploy', done => {
     return new Promise((resolve, reject) => {
       exec(command.join(' && '), (err, stdout, stderr) => {
         if (err) return reject(err)
-        // if (stderr) return reject(stderr)
         return resolve(stdout)
       })
     })
@@ -90,6 +105,7 @@ gulp.task('deploy', done => {
     'git pull origin dev --force'
   ]
   const createNewVersion = [
+    'gulp update-readme',
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
