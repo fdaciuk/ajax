@@ -49,16 +49,12 @@ When you're ready, continue with next steps:
 
 With the latest code version on `dev` branch, it will be executed the following steps:
 
-On `dev` branch:
-
-1. Update CDN version on `README.md`, with next version;
-2. Run this commands:
+On `dev` branch, just Run this command:
 
 ```console
-git pull origin dev --force
 npm run build:<version>
 ```
 
-`<version>` may be `patch`, `minor` ou `major`.
+When `<version>` may be `patch`, `minor` ou `major`.
 
 And done ;)
