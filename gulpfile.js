@@ -75,12 +75,27 @@ gulp.task('plato', done => {
 gulp.task('deploy', done => {
   console.log('Deploying...')
   const date = new Date(Date.now())
-  const commands = [
-    'git pull origin dev --force',
+  const execCommand = (command, message) => {
+    console.log(message)
+    return new Promise((resolve, reject) => {
+      exec(command.join(' && '), (err, stdout, stderr) => {
+        if (err) return reject('ERR:', err)
+        if (stderr) return reject('STDERR:', stderr)
+        if (stdout) return resolve('STDOUT:', stdout)
+      })
+    })
+  }
+
+  const syncRepository = [
+    'git pull origin dev --force'
+  ]
+  const createNewVersion = [
     'gulp uglify',
     'git add .',
     'git commit -m "Minifying"',
-    'git tag -f v' + pkg.version,
+    'git tag -f v' + pkg.version
+  ]
+  const generateReports = [
     'gulp plato',
     'rm -rf .tmp',
     'mkdir .tmp',
@@ -91,22 +106,35 @@ gulp.task('deploy', done => {
     'git commit -m "Update reports at ' + date + ' "',
     'git push origin gh-pages',
     'cd ../',
-    'rm -rf .tmp',
+    'rm -rf .tmp'
+  ]
+  const updateMainBranch = [
     'git checkout master',
     'git merge dev',
-    'git push origin master --tags',
+    'git push origin master --tags'
+  ]
+  const updateDevBranch = [
     'git checkout dev',
-    'git push origin dev --tags',
+    'git push origin dev --tags'
+  ]
+  const npmPublish = [
     'npm run pub'
   ]
-  exec(commands.join(' && '), (err, stdout, stderr) => {
-    console.log('Done!')
-    if (stdout) console.log('STDOUT:', stdout)
-    if (stderr) console.log('STDERR:', stderr)
-    if (err) console.log('ERROR:', err)
-    process.exit(0)
-    done()
-  })
+
+  execCommand(syncRepository, 'Sync repository...')
+    .then(() => execCommand(createNewVersion, 'Create new Version...'))
+    .then(() => execCommand(generateReports, 'Generate reports...'))
+    .then(() => execCommand(updateMainBranch, 'Update main branch'))
+    .then(() => execCommand(updateDevBranch, 'Update dev branch...'))
+    .then(() => execCommand(npmPublish, 'NPM Publish...'))
+    .then(() => {
+      console.log('Done!')
+      process.exit(0)
+    })
+    .catch((errCode, err) => {
+      console.log(errCode, err)
+      process.exit(1)
+    })
 })
 
 gulp.task('default', [ 'webserver', 'watch' ])
