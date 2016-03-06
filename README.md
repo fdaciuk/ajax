@@ -33,7 +33,7 @@ Just download `dist/ajax.min.js` file, and add `dist/ajax.min.js` on your HTML f
 <script src="js/ajax.min.js"></script>
 ```
 
-### CommonJS (via NPM)
+### NPM
 
 ```console
 npm i --save @fdaciuk/ajax
@@ -62,31 +62,39 @@ Or you may just add the following line to your HTML file:
 ### AMD
 
 ```js
-define([ 'ajax' ], function( ajax ) {
+define(['ajax'], function(ajax) {
   ajax().get(...)
   ...
-});
+})
 ```
 
 ### CommonJS
 
 ```js
-var ajax = require( '@fdaciuk/ajax' );
-ajax().post(...);
+var ajax = require('@fdaciuk/ajax')
+ajax().post(...)
 ...
 ```
 
-#### Method of `window` object
+### ES6 / ES2015 module
 
 ```js
-window.ajax().get(...);
+import ajax from 'ajax'
+ajax().put(...)
+```
+
+### Method of `window` object
+
+```js
+window.ajax().get(...)
 ```
 
 or just
 
 ```js
-ajax().get(...);
+ajax().get(...)
 ```
+
 ## Signature
 
 ```js
@@ -95,7 +103,7 @@ ajax([options])
 
 ## Options
 
-Optional object with request options. See all options below.
+Optional object with request options. See all accepted options below.
 
 **HTTP Methods**
 
@@ -108,9 +116,9 @@ var request = ajax({
   data: {
     user: 'john'
   }
-});
+})
 
-request.then(function(response) {...});
+request.then(function(response) {...})
 ```
 
 For using this kind of request, you must pass `url` property.
@@ -141,7 +149,7 @@ You may use any of this methods, instead the above approach:
 > Get data as a JSON object.
 
 ```js
-ajax().get('/api/users');
+ajax().get('/api/users')
 ```
 
 ### `post(url, [data])`
@@ -150,15 +158,16 @@ ajax().get('/api/users');
 
 ```js
 // Without headers
-ajax().post('/api/users', { slug: 'john' });
+ajax().post('/api/users', { slug: 'john' })
 
 // With headers
 var request = ajax({
   headers: {
     'x-access-token': '123@abc'
   }
-});
-request.post('/login', { username: 'user', password: 'b4d45$' });
+})
+
+request.post('/login', { username: 'user', password: 'b4d45$' })
 ```
 
 ### `put(url, [data])`
@@ -166,7 +175,7 @@ request.post('/login', { username: 'user', password: 'b4d45$' });
 > Update an entire register.
 
 ```js
-ajax().put('/api/users', { slug: 'john', age: 37 });
+ajax().put('/api/users', { slug: 'john', age: 37 })
 ```
 
 ### `delete(url, [data])`
@@ -174,7 +183,7 @@ ajax().put('/api/users', { slug: 'john', age: 37 });
 > Delete a register.
 
 ```js
-ajax().delete('/api/users', { id: 1 });
+ajax().delete('/api/users', { id: 1 })
 ```
 
 ## Return methods
@@ -186,7 +195,7 @@ ajax().delete('/api/users', { id: 1 });
 ```js
 ajax().get('/api/users').then(function(response, xhr) {
   // Do something
-});
+})
 ```
 
 ### `catch(responseError, xhrObject)`
@@ -196,7 +205,7 @@ ajax().get('/api/users').then(function(response, xhr) {
 ```js
 ajax().post('/api/users', { slug: 'john' }).catch(function(response, xhr) {
   // Do something
-});
+})
 ```
 
 ### `always(response, xhrObject)`
@@ -206,7 +215,7 @@ ajax().post('/api/users', { slug: 'john' }).catch(function(response, xhr) {
 ```js
 ajax().post('/api/users', { slug: 'john' }).always(function(response, xhr) {
   // Do something
-});
+})
 ```
 
 ## Deprecated methods
