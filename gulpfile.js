@@ -80,7 +80,7 @@ gulp.task('deploy', done => {
     return new Promise((resolve, reject) => {
       exec(command.join(' && '), (err, stdout, stderr) => {
         if (err) return reject(err)
-        if (stderr) return reject(stderr)
+        // if (stderr) return reject(stderr)
         return resolve(stdout)
       })
     })
