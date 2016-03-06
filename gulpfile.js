@@ -79,9 +79,9 @@ gulp.task('deploy', done => {
     console.log(message)
     return new Promise((resolve, reject) => {
       exec(command.join(' && '), (err, stdout, stderr) => {
-        if (err) return reject('ERR:', err)
-        if (stderr) return reject('STDERR:', stderr)
-        if (stdout) return resolve('STDOUT:', stdout)
+        if (err) return reject(err)
+        if (stderr) return reject(stderr)
+        return resolve(stdout)
       })
     })
   }
@@ -131,8 +131,8 @@ gulp.task('deploy', done => {
       console.log('Done!')
       process.exit(0)
     })
-    .catch((errCode, err) => {
-      console.log(errCode, err)
+    .catch((err) => {
+      console.log(err)
       process.exit(1)
     })
 })
