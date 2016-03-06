@@ -75,7 +75,7 @@ gulp.task('plato', done => {
 
 gulp.task('update-readme', (done) => {
   fs.readFile('README.md', 'utf8', (err, file) => {
-    const github = file.split('\n').reduce((acc, line) => {
+    const updateVersion = file.split('\n').reduce((acc, line) => {
       const versionLine = line.includes('//cdn.rawgit.com/fdaciuk/ajax')
       let newLine = line
       if (versionLine) {
