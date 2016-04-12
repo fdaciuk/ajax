@@ -66,16 +66,16 @@
     $private.xhrConnection = function xhrConnection (type, url, data, options) {
       var xhr = new XMLHttpRequest()
       xhr.open(type, url || '', true)
-      $private.setHeaders(xhr, options.headers)
+      $private.setHeaders(xhr, options.headers, options.ignoreAbsentContentType)
       xhr.addEventListener('readystatechange', $private.ready, false)
       xhr.send($private.objectToQueryString(data))
       return $private.promises()
     }
 
-    $private.setHeaders = function setHeaders (xhr, headers) {
+    $private.setHeaders = function setHeaders (xhr, headers, ignoreAbsentContentType) {
       headers = headers || {}
 
-      if (!$private.hasContentType(headers)) {
+      if (!ignoreAbsentContentType && !$private.hasContentType(headers)) {
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
       }
 
