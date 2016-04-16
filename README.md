@@ -140,6 +140,10 @@ ajax({
 
 If `content-type` is not passed, `application/x-www-form-urlencoded` will be used.
 
+**Note about uploads:**
+
+If you need to upload some file, with `FormData`, use `content-type: null`.
+
 ## Methods
 
 You may use any of this methods, instead the above approach:
