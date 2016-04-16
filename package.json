@@ -1,7 +1,7 @@
 {
   "name": "@fdaciuk/ajax",
   "description": "Ajax module in Vanilla JS",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "main": "dist/ajax.min.js",
   "scripts": {
     "test": "gulp test",
