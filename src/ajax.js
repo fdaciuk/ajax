@@ -80,7 +80,9 @@
       }
 
       Object.keys(headers).forEach(function (name) {
-        xhr.setRequestHeader(name, headers[name])
+        if (headers[name]) {
+          xhr.setRequestHeader(name, headers[name])
+        }
       })
     }
 
