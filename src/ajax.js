@@ -180,6 +180,22 @@
       )
     }
 
+    $public.json = function json (url, callback) {
+      var tag = document.createElement('script')
+      tag.type = 'text/javascript'
+      var concat = url.match(/\?/) ? '&' : '?'
+      var key = Math.random().toString(36).slice(2).substring(16)
+      var callbackName = 'jsonp_callback_' + key
+      tag.src = url + concat + 'callback=' + callbackName
+      window[callbackName] = function (data) {
+        callback.call(window, data)
+        document.getElementsByTagName('head')[0].removeChild(tag)
+        tag = null
+        delete window[callbackName]
+      }
+      document.getElementsByTagName('head')[0].appendChild(tag)
+    }
+
     return $public
   }
 

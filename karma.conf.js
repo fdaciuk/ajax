@@ -15,8 +15,8 @@ module.exports = function (config) {
       'src/**/*.js',
       'node_modules/chai/chai.js',
       'test/unit/ajax.test.js',
-      'test/unit/ajax-{get,post,put,delete}.test.js',
-      'test/unit/ajax-{get,post,put,delete}-promises.test.js'
+      'test/unit/ajax-{get,post,put,delete,json}.test.js',
+      'test/unit/ajax-{get,post,put,delete,json}-promises.test.js'
     ],
 
     // list of files to exclude
