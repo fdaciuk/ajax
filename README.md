@@ -222,6 +222,16 @@ ajax().post('/api/users', { slug: 'john' }).always(function(response, xhr) {
 })
 ```
 
+### `json(url, function(){/* callback */})`
+
+> Get data as a JSON object as jsonp.
+
+```js
+ajax().json('/api/users', function(users){
+  console.log(users)
+})
+```
+
 ## Deprecated methods
 
 You may see the deprecated methods [here][deprecated]
