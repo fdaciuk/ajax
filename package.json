@@ -13,7 +13,8 @@
     "build:patch": "npm version patch && npm run deploy",
     "build:minor": "npm version minor && npm run deploy",
     "build:major": "npm version major && npm run deploy",
-    "pub": "npm publish --access=public"
+    "pub": "npm publish --access=public",
+    "pub:beta": "npm publish --access=public --tag beta"
   },
   "directories": {
     "test": "test"
