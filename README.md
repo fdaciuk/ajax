@@ -144,6 +144,15 @@ If `content-type` is not passed, `application/x-www-form-urlencoded` will be use
 
 If you need to upload some file, with `FormData`, use `content-type: null`.
 
+**baseUrl**
+
+You can pass a `baseUrl` param to improve calls. Example:
+
+```js
+const request = ajax({ baseUrl: 'http://example.com/api/v2' })
+request.get('/users') // get `http://example.com/api/v2/users` url
+```
+
 ## Methods
 
 You may use any of this methods, instead the above approach:
