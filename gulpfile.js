@@ -11,8 +11,9 @@ const plato = require('plato')
 const exec = require('child_process').exec
 const pkg = require('./package.json')
 
-const coreFiles = 'src/**/*.js'
-const allFiles = '{test,src}/**/*.js'
+const coreFiles = 'src/ajax.js'
+const testFiles = 'test/**/*.js'
+const allFiles = [coreFiles, testFiles]
 
 const banner = () => {
   return [
@@ -51,8 +52,8 @@ gulp.task('test', done => {
   server.start()
 })
 
-gulp.task('webserver', done => {
-  exec('lsof -t -i tcp:3000 | xargs kill && lsof -t -i tcp:9001 | xargs kill', () => {
+gulp.task('webserver', (done) => {
+  return exec('npm run kill', () => {
     require('./api/app')
     exec('python -m SimpleHTTPServer 9001', () => {
       console.log('Server listen on port 9001')
