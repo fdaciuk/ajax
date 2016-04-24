@@ -12,7 +12,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*.js',
+      'src/ajax.js',
       'node_modules/chai/chai.js',
       'test/unit/ajax.test.js',
       'test/unit/ajax-{get,post,put,delete}.test.js',
