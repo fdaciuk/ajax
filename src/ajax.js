@@ -45,14 +45,14 @@
     var promiseMethods = returnMethods.reduce(function (promise, method) {
       promise[method] = function (callback) {
         promise[method] = callback
-        return this
+        return promise
       }
       return promise
     }, {})
     var xhr = new XMLHttpRequest()
     xhr.open(type, url, true)
     setHeaders(xhr, options.headers)
-    xhr.addEventListener('readystatechange', ready(promiseMethods), false)
+    xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
     xhr.send(objectToQueryString(data))
     return promiseMethods
   }
@@ -73,11 +73,10 @@
     })
   }
 
-  function ready (promiseMethods) {
-    return function () {
-      var xhr = this
+  function ready (promiseMethods, xhr) {
+    return function handleReady () {
       if (xhr.readyState === xhr.DONE) {
-        xhr.removeEventListener('readystatechange', ready, false)
+        xhr.removeEventListener('readystatechange', handleReady, false)
         promiseMethods.always.apply(promiseMethods, parseResponse(xhr))
 
         if (xhr.status >= 200 && xhr.status < 300) {
