@@ -1,5 +1,5 @@
-;(function (should, expect, Ajax) {
+;(function (expect, ajax) {
   'use strict'
 
   describe('#AJAX - Test `put` method', function () {})
-})(window.chai.should(), window.chai.expect, window.Ajax)
+})(window.chai.expect, window.ajax)

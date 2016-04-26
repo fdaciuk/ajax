@@ -1,54 +1,36 @@
-;(function (should, expect, Ajax, ajax) {
+;(function (expect, ajax) {
   'use strict'
 
   describe('#AJAX - Test `get` method', function () {
-    var request
-    beforeEach(function () {
-      request = new Ajax()
-    })
-
-    it('DEPRECATED - Should return an object (users list)', function (done) {
-      request.get('http://127.0.0.1:3000/api/users').done(function (response) {
-        response.should.be.an('object')
-        done()
-      })
-    })
+    var request = ajax({ baseUrl: 'http://127.0.0.1:3000/api' })
 
     it('Should return an object (users list)', function (done) {
-      request.get('http://127.0.0.1:3000/api/users').then(function (response) {
-        response.should.be.an('object')
+      request.get('/users').then(function (response) {
+        expect(response).to.be.an('object')
         done()
       })
     })
 
     it('Should return data about `paulo`', function (done) {
-      request.get('http://127.0.0.1:3000/api/user/paulo')
-        .done(function (response) {
-          response.name.should.be.equal('Paulo Torres')
-          done()
-        })
-    })
-
-    it('DEPRECATED - Should return 404 error', function (done) {
-      request.get('http://127.0.0.1:3000/api/something')
-        .error(function (response, xhr) {
-          xhr.status.should.be.equal(404)
+      request.get('/user/paulo')
+        .then(function (response) {
+          expect(response.name).to.be.equal('Paulo Torres')
           done()
         })
     })
 
     it('Should return 404 error', function (done) {
-      request.get('http://127.0.0.1:3000/api/something')
+      request.get('/something')
         .catch(function (response, xhr) {
-          xhr.status.should.be.equal(404)
+          expect(xhr.status).to.be.equal(404)
           done()
         })
     })
 
     it('Should return 404 error on `always` promise', function (done) {
-      request.get('http://127.0.0.1:3000/api/something')
+      request.get('/something')
         .always(function (response, xhr) {
-          xhr.status.should.be.equal(404)
+          expect(xhr.status).to.be.equal(404)
           done()
         })
     })
@@ -56,11 +38,11 @@
     it('Should return the same result on both promises `done` and `always`',
       function (done) {
         function requestResponse (response, xhr) {
-          response.should.be.an('object')
+          expect(response).to.be.an('object')
           done()
         }
-        request.get('http://127.0.0.1:3000/api/users')
-          .done(requestResponse)
+        ajax().get('http://127.0.0.1:3000/api/users')
+          .then(requestResponse)
           .always(requestResponse)
       })
 
@@ -70,7 +52,7 @@
       })
       request.get('http://localhost:3000/api/users')
         .then(function (response) {
-          response.should.be.an('object')
+          expect(response).to.be.an('object')
           done()
         })
     })
@@ -82,9 +64,9 @@
       })
 
       request.then(function (response) {
-        response.should.be.an('object')
+        expect(response).to.be.an('object')
         done()
       })
     })
   })
-})(window.chai.should(), window.chai.expect, window.Ajax, window.ajax)
+})(window.chai.expect, window.ajax)

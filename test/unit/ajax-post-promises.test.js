@@ -1,28 +1,19 @@
-;(function (should, expect, Ajax) {
+;(function (expect, ajax) {
   'use strict'
 
   describe('#AJAX - Test `post` promises interface', function () {
-    var ajax = new Ajax()
-    var postRequest = ajax.post()
+    var postRequest = ajax().post()
 
     it('Should `post` method return `then` method', function () {
-      postRequest.should.have.property('then')
+      expect(postRequest).to.have.property('then')
     })
 
     it('Should `post` method return `catch` method', function () {
-      postRequest.should.have.property('catch')
-    })
-
-    it('DEPRECATED - Should `post` method return `done` method', function () {
-      postRequest.should.have.property('done')
-    })
-
-    it('DEPRECATED - Should `post` method return `error` method', function () {
-      postRequest.should.have.property('error')
+      expect(postRequest).to.have.property('catch')
     })
 
     it('Should `post` method return `always` method', function () {
-      postRequest.should.have.property('always')
+      expect(postRequest).to.have.property('always')
     })
   })
-})(window.chai.should(), window.chai.expect, window.Ajax)
+})(window.chai.expect, window.ajax)

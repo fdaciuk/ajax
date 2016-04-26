@@ -1,23 +1,21 @@
-;(function (should, expect, Ajax) {
+;(function (expect, ajax) {
   'use strict'
 
   describe('#AJAX - Test module interface', function () {
-    var ajax = new Ajax()
-
     it('Should have `get` method', function () {
-      ajax.should.have.property('get')
+      expect(ajax()).to.have.property('get')
     })
 
     it('Should have `post` method', function () {
-      ajax.should.have.property('post')
+      expect(ajax()).to.have.property('post')
     })
 
     it('Should have `put` method', function () {
-      ajax.should.have.property('put')
+      expect(ajax()).to.have.property('put')
     })
 
     it('Should have `delete` method', function () {
-      ajax.should.have.property('delete')
+      expect(ajax()).to.have.property('delete')
     })
   })
-})(window.chai.should(), window.chai.expect, window.Ajax)
+})(window.chai.expect, window.ajax)

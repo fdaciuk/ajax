@@ -1,28 +1,19 @@
-;(function (should, expect, Ajax) {
+;(function (expect, ajax) {
   'use strict'
 
   describe('#AJAX - Test `put` promises interface', function () {
-    var ajax = new Ajax()
-    var putRequest = ajax.put()
+    var putRequest = ajax().put()
 
     it('Should `put` method return `then` method', function () {
-      putRequest.should.have.property('then')
+      expect(putRequest).to.have.property('then')
     })
 
     it('Should `put` method return `catch` method', function () {
-      putRequest.should.have.property('catch')
-    })
-
-    it('DEPRECATED - Should `put` method return `done` method', function () {
-      putRequest.should.have.property('done')
-    })
-
-    it('DEPRECATED - Should `put` method return `error` method', function () {
-      putRequest.should.have.property('error')
+      expect(putRequest).to.have.property('catch')
     })
 
     it('Should `put` method return `always` method', function () {
-      putRequest.should.have.property('always')
+      expect(putRequest).to.have.property('always')
     })
   })
-})(window.chai.should(), window.chai.expect, window.Ajax)
+})(window.chai.expect, window.ajax)
