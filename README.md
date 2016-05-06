@@ -243,6 +243,12 @@ Check [CONTRIBUTING.md][contributing-url]
 
 <https://github.com/reportz/ajax>
 
+## Browser compatibility
+
+![Chrome][chrome-logo] | ![Firefox][firefox-logo] | ![IE][ie-logo] | ![Edge][edge-logo] | ![Opera][opera-logo] | ![Safari][safari-ios-logo]
+---                    | ---                      | ---            | ---                | ---                  | ---
+Latest ✔               | Latest ✔                 | 9+ ✔           | Latest ✔           | Latest ✔             | 3.2+ ✔
+
 ## License
 
 [MIT][license-url] © Fernando Daciuk
@@ -260,3 +266,9 @@ Check [CONTRIBUTING.md][contributing-url]
 [contributing-image]: https://img.shields.io/badge/fdaciuk%2Fajax-CONTRIBUTE-orange.svg?style=flat-square
 [contributing-url]: CONTRIBUTING.md
 [deprecated]: deprecated.md
+[chrome-logo]: https://rawgit.com/alrra/browser-logos/master/chrome/chrome_48x48.png
+[firefox-logo]: https://rawgit.com/alrra/browser-logos/master/firefox/firefox_48x48.png
+[ie-logo]: https://rawgit.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png
+[edge-logo]: https://rawgit.com/alrra/browser-logos/master/edge/edge_48x48.png
+[opera-logo]: https://rawgit.com/alrra/browser-logos/master/opera/opera_48x48.png
+[safari-ios-logo]: https://rawgit.com/alrra/browser-logos/master/safari-ios/safari-ios_48x48.png
