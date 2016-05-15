@@ -62,7 +62,7 @@ Or you may just add the following line to your HTML file:
 ### AMD
 
 ```js
-define(['ajax'], function(ajax) {
+define(['ajax'], function (ajax) {
   ajax().get(...)
   ...
 })
@@ -118,7 +118,7 @@ var request = ajax({
   }
 })
 
-request.then(function(response) {...})
+request.then(function (response) {...})
 ```
 
 For using this kind of request, you must pass `url` property.
@@ -206,7 +206,7 @@ ajax().delete('/api/users', { id: 1 })
 > Promise that returns if the request was successful.
 
 ```js
-ajax().get('/api/users').then(function(response, xhr) {
+ajax().get('/api/users').then(function (response, xhr) {
   // Do something
 })
 ```
@@ -216,7 +216,7 @@ ajax().get('/api/users').then(function(response, xhr) {
 > Promise that returns if the request has an error.
 
 ```js
-ajax().post('/api/users', { slug: 'john' }).catch(function(response, xhr) {
+ajax().post('/api/users', { slug: 'john' }).catch(function (response, xhr) {
   // Do something
 })
 ```
@@ -226,10 +226,29 @@ ajax().post('/api/users', { slug: 'john' }).catch(function(response, xhr) {
 > That promise always returns, independent if the status is `done` or `error`.
 
 ```js
-ajax().post('/api/users', { slug: 'john' }).always(function(response, xhr) {
+ajax().post('/api/users', { slug: 'john' }).always(function (response, xhr) {
   // Do something
 })
 ```
+
+## Abort request
+
+If a request is very slow, you can abort it using `abort()` method:
+
+```js
+const getLazyUser = ajax().get('/api/users/lazy')
+
+const timer = setTimeout(function () {
+  getLazyUser.abort()
+}, 3000)
+
+getLazyUser.then(function (response) {
+  clearTimeout(timer)
+  console.log(response)
+})
+```
+
+In the above example, if request is slowest than 3 seconds, it will be aborted.
 
 ## Deprecated methods
 
