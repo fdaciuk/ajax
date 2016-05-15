@@ -13,7 +13,8 @@ const pkg = require('./package.json')
 
 const coreFiles = 'src/ajax.js'
 const testFiles = 'test/**/*.js'
-const allFiles = [coreFiles, testFiles]
+const apiFiles = 'api/**/*.js'
+const allFiles = [coreFiles, testFiles, apiFiles]
 
 const banner = () => {
   return [
@@ -44,22 +45,11 @@ gulp.task('uglify', () => {
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('test', done => {
-  const server = new Server({
+gulp.task('test', (done) => {
+  return new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done)
-  server.start()
-})
-
-gulp.task('webserver', (done) => {
-  return exec('npm run kill', () => {
-    require('./api/app')
-    exec('python -m SimpleHTTPServer 9001', () => {
-      console.log('Server listen on port 9001')
-      done()
-    })
-  })
+  }, () => done()).start()
 })
 
 gulp.task('watch', [ 'test', 'lint' ], () => {
@@ -153,4 +143,4 @@ gulp.task('deploy', done => {
     })
 })
 
-gulp.task('default', [ 'webserver', 'watch' ])
+gulp.task('default', [ 'watch' ])
