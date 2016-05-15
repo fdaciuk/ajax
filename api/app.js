@@ -21,6 +21,13 @@ function handleRequest (req, res, next) {
     res.status(404)
     user = '404 - Not found'
   }
+
+  if (userRequested === 'lazy') {
+    setTimeout(() => {
+      res.json(user)
+    }, 3000)
+    return
+  }
   res.json(user)
 }
 
