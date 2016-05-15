@@ -68,5 +68,19 @@
         done()
       })
     })
+
+    it('Should abort a lazy request', function (done) {
+      var request = ajax().get('http://localhost:3000/api/users/lazy')
+      var timer = setTimeout(function () {
+        request.abort()
+        expect(true).to.be.ok
+        done()
+      }, 1000)
+      request.then(function (response) {
+        clearTimeout(timer)
+        expect(false).to.be.ok
+        done()
+      })
+    })
   })
 })(window.chai.expect, window.ajax)
