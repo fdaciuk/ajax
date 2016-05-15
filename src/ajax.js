@@ -54,6 +54,9 @@
     setHeaders(xhr, options.headers)
     xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
     xhr.send(objectToQueryString(data))
+    promiseMethods.abort = function () {
+      return xhr.abort()
+    }
     return promiseMethods
   }
 
