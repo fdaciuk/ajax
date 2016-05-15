@@ -8,13 +8,7 @@
 
 ## Running
 
-You need to install `gulp`, `mocha`, `karma-cli` and `istanbul` globally:
-
-```console
-[sudo] npm i -g gulp mocha istanbul karma-cli
-```
-
-After that, you need to install local modules:
+Install local modules:
 
 ```console
 npm i
@@ -23,7 +17,7 @@ npm i
 Then, you can start the webserver and execute tests with the following command:
 
 ```console
-npm run watch
+npm run test:watch
 ```
 
 - Write tests for your feature;
@@ -36,6 +30,10 @@ When you're ready, continue with next steps:
 - Commit your changes: `git commit -m 'Add some feature'`;
 - Push to the branch: `git push origin my-new-feature`;
 - Submit a pull request for `dev` branch, and summon `@fdaciuk` :D
+
+## Running tests once
+
+Just execute `npm test`.
 
 ## Tips
 
