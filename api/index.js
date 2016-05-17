@@ -18,4 +18,3 @@ process.on('SIGINT', () => gracefulShutdown())
 process.on('SIGTERM', () => gracefulShutdown())
 
 console.log('Server listen on port ', PORT)
-
