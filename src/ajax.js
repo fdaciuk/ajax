@@ -51,9 +51,7 @@
     }, {})
     var xhr = new XMLHttpRequest()
     xhr.open(type, url, true)
-    if (options.withCredentials) {
-      xhr.withCredentials = true
-    }
+    xhr.withCredentials = options.hasOwnProperty('withCredentials')
     setHeaders(xhr, options.headers)
     xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
     xhr.send(objectToQueryString(data))
