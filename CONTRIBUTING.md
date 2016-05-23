@@ -50,7 +50,7 @@ With the latest code version on `dev` branch, it will be executed the following 
 On `dev` branch, just Run this command:
 
 ```console
-npm run build:<version>
+npm version <version>
 ```
 
 When `<version>` may be `patch`, `minor` ou `major`.
