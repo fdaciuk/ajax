@@ -44,6 +44,7 @@
     "chai": "^3.5.0",
     "concurrently": "^2.1.0",
     "cors": "^2.7.1",
+    "es6-promise": "^3.2.1",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

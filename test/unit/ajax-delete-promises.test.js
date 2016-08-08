@@ -11,9 +11,5 @@
     it('Should `delete` method return `catch` method', function () {
       expect(deleteRequest).to.have.property('catch')
     })
-
-    it('Should `delete` method return `always` method', function () {
-      expect(deleteRequest).to.have.property('always')
-    })
   })
 })(window.chai.expect, window.ajax)

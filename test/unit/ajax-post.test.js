@@ -7,7 +7,7 @@
     it('Should return an object', function (done) {
       request.post('/user/joao')
         .then(function (response) {
-          expect(response).to.be.an('object')
+          expect(response.data).to.be.an('object')
           done()
         })
     })
@@ -15,7 +15,7 @@
     it('Should return data about `joao`', function (done) {
       request.post('/user', { slug: 'joao' })
         .then(function (response) {
-          expect(response.name).to.be.equal('João da Silva')
+          expect(response.data.name).to.be.equal('João da Silva')
           done()
         })
     })
@@ -24,15 +24,15 @@
       var data = { slug: 'joao', lastname: 'other' }
       request.post('/user', data)
         .then(function (response) {
-          expect(response.name).to.be.equal('João da Silva')
+          expect(response.data.name).to.be.equal('João da Silva')
           done()
         })
     })
 
     it("Should return error 404 when user doesn't exist", function (done) {
       request.post('/user', { slug: 'alberto' })
-        .catch(function (response, xhr) {
-          expect(xhr.status).to.be.equal(404)
+        .catch(function (response) {
+          expect(response.xhr.status).to.be.equal(404)
           done()
         })
     })
@@ -44,8 +44,8 @@
         headers: { 'content-type': null }
       })
       request.post('http://localhost:3000/api/getheader', file)
-        .then(function (response, xhr) {
-          expect(response.header).to.match(/^multipart\/form-data/)
+        .then(function (response) {
+          expect(response.data.header).to.match(/^multipart\/form-data/)
           done()
         })
     })
