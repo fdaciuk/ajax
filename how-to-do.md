@@ -272,14 +272,27 @@ anterior, atual 13 3
 É por isso que inicia o `reduce` com `{}`, para que todo o processamento possa ser adicionado nesse objeto novo que será retornado ao final do processamento.
 
 
-
-
 - Segunda passagem:
 
 ```js
-promise = {}
-method = 'then'
+promise = {
+  'then': callback,
+  'catch': callback
+}
+method = 'catch'
 ```
+
+- Terceira passagem:
+
+```js
+promise = {
+  'then': callback,
+  'catch': callback,
+  'always': callback
+}
+method = 'always'
+```
+
 
 ```js
 var promiseMethods = returnMethods.reduce(function (promise, method) {
@@ -290,10 +303,3 @@ var promiseMethods = returnMethods.reduce(function (promise, method) {
   return promise
 }, {})
 ````
-
-- primeira passagem:
-
-```js
-promise = {}
-method = 'then'
-```
