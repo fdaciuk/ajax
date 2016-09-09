@@ -253,6 +253,14 @@ var request = ajax({
 request.then(function (response) {...})
 ```
 
+Ou
+
+```js
+ajax().get('/api/users').then(function (response, xhr) {
+  // Do something
+})
+```
+
 ![EPAAAAA](https://s-media-cache-ak0.pinimg.com/564x/fb/e2/53/fbe253bb518e4d749c40dbec5c6506dc.jpg)
 
 > De onde `promise` recebe `{}`?
@@ -282,6 +290,14 @@ promise = {
 method = 'catch'
 ```
 
+Uso:
+
+```js
+ajax().post('/api/users', { slug: 'john' }).catch(function (response, xhr) {
+  // Do something
+})
+```
+
 - Terceira passagem:
 
 ```js
@@ -293,13 +309,15 @@ promise = {
 method = 'always'
 ```
 
+Uso:
 
 ```js
-var promiseMethods = returnMethods.reduce(function (promise, method) {
-  promise[method] = function (callback) {
-    promise[method] = callback
-    return promise
-  }
-  return promise
-}, {})
-````
+ajax().post('/api/users', { slug: 'john' }).always(function (response, xhr) {
+  // Do something
+})
+```
+
+A partir dos exemplos de uso podemos perceber que o padrão de *callback* para as funções da *Promise* são:
+
+- response
+- xhr
