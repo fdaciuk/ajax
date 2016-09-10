@@ -317,7 +317,46 @@ ajax().post('/api/users', { slug: 'john' }).always(function (response, xhr) {
 })
 ```
 
-A partir dos exemplos de uso podemos perceber que o padrão de *callback* para as funções da *Promise* são:
+Você deve se perguntar:
 
-- response
-- xhr
+> Mas como ele irá executar essa função **sempre** que a requisição finalizar?
+
+E eu lhe mostro, aqui ó:
+
+```js
+function ready (promiseMethods, xhr) {
+  return function handleReady () {
+    if (xhr.readyState === xhr.DONE) {
+      xhr.removeEventListener('readystatechange', handleReady, false)
+      promiseMethods.always.apply(promiseMethods, parseResponse(xhr))
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        promiseMethods.then.apply(promiseMethods, parseResponse(xhr))
+      } else {
+        promiseMethods.catch.apply(promiseMethods, parseResponse(xhr))
+      }
+    }
+  }
+}
+```
+
+Bem nessa linha aqui:
+
+```js
+promiseMethods.always.apply(promiseMethods, parseResponse(xhr))
+```
+
+## Mágica da *Promise*
+
+Agora vou lhe mostrar onde fica o coração dessa *Promise*!
+
+```js
+if (xhr.status >= 200 && xhr.status < 300) {
+  promiseMethods.then.apply(promiseMethods, parseResponse(xhr))
+} else {
+  promiseMethods.catch.apply(promiseMethods, parseResponse(xhr))
+}
+```
+
+É exatamente aqui onde ele definiu quando será executada a função de `then` e `catch`!
+
