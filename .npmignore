@@ -1,7 +1,6 @@
 api/
 coverage/
 plato/
-src/
 test/
 .*
 CONTRIBUTING.md
