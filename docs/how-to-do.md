@@ -362,5 +362,5 @@ if (xhr.status >= 200 && xhr.status < 300) {
 
 Agora eu lhe pergunto:
 
-> Você percebeu o porquê e quando a função de `then` e `catch` são executadas.
+> Você percebeu o porquê e quando a função de `then` e `catch` são executadas?
 
