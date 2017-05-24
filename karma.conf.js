@@ -14,6 +14,7 @@ module.exports = function (config) {
     files: [
       'src/ajax.js',
       'node_modules/chai/chai.js',
+      'node_modules/es6-promise/dist/es6-promise.js',
       'test/unit/ajax.test.js',
       'test/unit/ajax-{get,post,put,delete}.test.js',
       'test/unit/ajax-{get,post,put,delete}-promises.test.js'

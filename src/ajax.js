@@ -41,24 +41,21 @@
   }
 
   function xhrConnection (type, url, data, options) {
-    var returnMethods = ['then', 'catch', 'always']
-    var promiseMethods = returnMethods.reduce(function (promise, method) {
-      promise[method] = function (callback) {
-        promise[method] = callback
-        return promise
-      }
-      return promise
-    }, {})
-    var xhr = new XMLHttpRequest()
-    xhr.open(type, url, true)
-    xhr.withCredentials = options.hasOwnProperty('withCredentials')
-    setHeaders(xhr, options.headers)
-    xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
-    xhr.send(objectToQueryString(data))
-    promiseMethods.abort = function () {
-      return xhr.abort()
+    var xhr
+    var promise = new Promise(function(resolve, reject) {
+      xhr = new XMLHttpRequest()
+      xhr.open(type, url, true)
+      xhr.withCredentials = options.hasOwnProperty('withCredentials')
+      setHeaders(xhr, options.headers)
+      xhr.addEventListener('readystatechange', ready(resolve, reject, xhr), false)
+      xhr.send(objectToQueryString(data))
+    })
+
+    promise.abort = function () {
+      return xhr && xhr.abort
     }
-    return promiseMethods
+
+    return promise
   }
 
   function setHeaders (xhr, headers) {
@@ -77,29 +74,29 @@
     })
   }
 
-  function ready (promiseMethods, xhr) {
+  function ready (resolve, reject, xhr) {
     return function handleReady () {
       if (xhr.readyState === xhr.DONE) {
         xhr.removeEventListener('readystatechange', handleReady, false)
-        promiseMethods.always.apply(promiseMethods, parseResponse(xhr))
 
         if (xhr.status >= 200 && xhr.status < 300) {
-          promiseMethods.then.apply(promiseMethods, parseResponse(xhr))
+          resolve({xhr: xhr, data: parseResponse(xhr)})
         } else {
-          promiseMethods.catch.apply(promiseMethods, parseResponse(xhr))
+          var err = new Error('ajax request failed')
+          err.xhr = xhr
+          err.data = parseResponse(xhr)
+          reject(err)
         }
       }
     }
   }
 
   function parseResponse (xhr) {
-    var result
     try {
-      result = JSON.parse(xhr.responseText)
+      return JSON.parse(xhr.responseText)
     } catch (e) {
-      result = xhr.responseText
+      return xhr.responseText
     }
-    return [ result, xhr ]
   }
 
   function objectToQueryString (data) {

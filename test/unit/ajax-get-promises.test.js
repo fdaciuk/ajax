@@ -11,9 +11,5 @@
     it('Should `get` method return `catch` method', function () {
       expect(getRequest).to.have.property('catch')
     })
-
-    it('Should `get` method return `always` method', function () {
-      expect(getRequest).to.have.property('always')
-    })
   })
 })(window.chai.expect, window.ajax)

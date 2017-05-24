@@ -6,45 +6,27 @@
 
     it('Should return an object (users list)', function (done) {
       request.get('/users').then(function (response) {
-        expect(response).to.be.an('object')
+        expect(response.data).to.be.an('object')
         done()
       })
+      .catch(function (err){ console.log(err)})
     })
 
     it('Should return data about `paulo`', function (done) {
       request.get('/user/paulo')
         .then(function (response) {
-          expect(response.name).to.be.equal('Paulo Torres')
+          expect(response.data.name).to.be.equal('Paulo Torres')
           done()
         })
     })
 
     it('Should return 404 error', function (done) {
       request.get('/something')
-        .catch(function (response, xhr) {
-          expect(xhr.status).to.be.equal(404)
+        .catch(function (response) {
+          expect(response.xhr.status).to.be.equal(404)
           done()
         })
     })
-
-    it('Should return 404 error on `always` promise', function (done) {
-      request.get('/something')
-        .always(function (response, xhr) {
-          expect(xhr.status).to.be.equal(404)
-          done()
-        })
-    })
-
-    it('Should return the same result on both promises `done` and `always`',
-      function (done) {
-        function requestResponse (response, xhr) {
-          expect(response).to.be.an('object')
-          done()
-        }
-        ajax().get('http://127.0.0.1:3000/api/users')
-          .then(requestResponse)
-          .always(requestResponse)
-      })
 
     it('Should accept headers', function (done) {
       var request = ajax({
@@ -52,7 +34,7 @@
       })
       request.get('http://localhost:3000/api/users')
         .then(function (response) {
-          expect(response).to.be.an('object')
+          expect(response.data).to.be.an('object')
           done()
         })
     })
@@ -64,7 +46,7 @@
       })
 
       request.then(function (response) {
-        expect(response).to.be.an('object')
+        expect(response.data).to.be.an('object')
         done()
       })
     })
