@@ -1,3 +1,11 @@
+/**!
+ * ajax - v2.1.6
+ * Ajax module in Vanilla JS
+ * https://github.com/fdaciuk/ajax
+
+ * Wed May 24 2017 22:40:49 GMT-0300 (BRT)
+ * MIT (c) Fernando Daciuk
+ */
 ;(function (root, factory) {
   'use strict'
   /* istanbul ignore next */
@@ -87,7 +95,7 @@
           var parsedResponse = parseResponse(xhr)
 
           if (typeof options.middleware == "function") {
-            if (options.middleware(parsedResponse)) {
+            if (options.middleware(parsedResponse[0], parsedResponse[1])) {
               promiseMethods.then.apply(promiseMethods, parsedResponse)
             } else {
               promiseMethods.catch.apply(promiseMethods, parsedResponse)
