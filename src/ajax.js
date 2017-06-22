@@ -53,7 +53,7 @@
     xhr.open(type, url, true)
     xhr.withCredentials = options.hasOwnProperty('withCredentials')
     setHeaders(xhr, options.headers)
-    xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
+    xhr.addEventListener('readystatechange', ready(promiseMethods, xhr, options), false)
     xhr.send(objectToQueryString(data))
     promiseMethods.abort = function () {
       return xhr.abort()
@@ -77,14 +77,24 @@
     })
   }
 
-  function ready (promiseMethods, xhr) {
+  function ready (promiseMethods, xhr, options) {
     return function handleReady () {
       if (xhr.readyState === xhr.DONE) {
         xhr.removeEventListener('readystatechange', handleReady, false)
         promiseMethods.always.apply(promiseMethods, parseResponse(xhr))
 
         if (xhr.status >= 200 && xhr.status < 300) {
-          promiseMethods.then.apply(promiseMethods, parseResponse(xhr))
+          var parsedResponse = parseResponse(xhr)
+
+          if (typeof options.middleware == "function") {
+            if (options.middleware(parsedResponse)) {
+              promiseMethods.then.apply(promiseMethods, parsedResponse)
+            } else {
+              promiseMethods.catch.apply(promiseMethods, parsedResponse)
+            }
+          } else {
+            promiseMethods.then.apply(promiseMethods, parsedResponse)
+          }
         } else {
           promiseMethods.catch.apply(promiseMethods, parseResponse(xhr))
         }
