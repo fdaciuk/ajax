@@ -9,6 +9,7 @@
     "lint": "standard --verbose | snazzy",
     "lint:fix": "standard --fix",
     "format": "standard-format -w",
+    "preversion": "yarn lint  && yarn test",
     "postversion": "gulp deploy",
     "pub": "npm publish --access=public",
     "pub:beta": "npm publish --access=public --tag beta"
