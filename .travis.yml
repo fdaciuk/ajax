@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "5.11"
+  - "8"
 
 before_install:
   - "npm i -g codeclimate-test-reporter"
