@@ -50,6 +50,8 @@
       return promise
     }, {})
     var xhr = new XMLHttpRequest()
+    url += ('get' === type.toLowerCase() && data ? (url.indexOf('?') > -1 ? '&' : '?' ) + objectToQueryString(data) : '')
+    
     xhr.open(type, url, true)
     xhr.withCredentials = options.hasOwnProperty('withCredentials')
     setHeaders(xhr, options.headers)
