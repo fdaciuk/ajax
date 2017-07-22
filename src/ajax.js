@@ -50,9 +50,8 @@
       return promise
     }, {})
     var xhr = new XMLHttpRequest()
-    url += ('get' === type.toLowerCase() && data ? (url.indexOf('?') > -1 ? '&' : '?' ) + objectToQueryString(data) : '')
-    
-    xhr.open(type, url, true)
+    var featuredUrl = getUrlWithData(url, data, type)
+    xhr.open(type, featuredUrl, true)
     xhr.withCredentials = options.hasOwnProperty('withCredentials')
     setHeaders(xhr, options.headers)
     xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
@@ -61,6 +60,15 @@
       return xhr.abort()
     }
     return promiseMethods
+  }
+
+  function getUrlWithData (url, data, type) {
+    if (type.toLowerCase() !== 'get' || !data) {
+      return url
+    }
+    var dataAsQueryString = objectToQueryString(data)
+    var queryStringSeparator = url.indexOf('?') > -1 ? '&' : '?'
+    return url + queryStringSeparator + dataAsQueryString
   }
 
   function setHeaders (xhr, headers) {

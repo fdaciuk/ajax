@@ -84,7 +84,15 @@
     })
 
     it('Should send back get data',function (done){
-      var request = ajax().get('http://localhost:3000/api/getdata',{data:'data'})
+      var request = ajax().get('http://localhost:3000/api/getdata', {data: 'data'})
+      request.then(function (response) {
+        expect(response.data).to.be.equal('data')
+        done()
+      })
+    })
+
+    it('Should send back get data even if it already has query string params',function (done){
+      var request = ajax().get('http://localhost:3000/api/getdata?test=1', {data: 'data'})
       request.then(function (response) {
         expect(response.data).to.be.equal('data')
         done()
