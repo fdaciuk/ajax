@@ -42,7 +42,7 @@ app.post('/api/formdata', upload.any(), (req, res) => {
 app.post('/api/getheader', (req, res) => {
   res.json({ header: req.get('content-type') })
 })
-app.get('/api/getdata',function (req,res){
-  res.json(req.query);
+app.get('/api/getdata', function (req, res) {
+  res.json(req.query)
 })
 exports = module.exports = app

@@ -1,14 +1,14 @@
 'use strict'
 
 const fs = require('fs')
+const { join } = require('path')
 const gulp = require('gulp')
 const Server = require('karma').Server
 const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const header = require('gulp-header')
-const standard = require('gulp-standardize')
 const plato = require('plato')
-const exec = require('child_process').exec
+const { exec, spawn } = require('child_process')
 const pkg = require('./package.json')
 
 const coreFiles = 'src/ajax.js'
@@ -30,12 +30,14 @@ const banner = () => {
   ].join('\n')
 }
 
-gulp.task('lint', () => {
-  gulp.src(allFiles)
-    .pipe(standard())
-    .pipe(standard.reporter('snazzy'))
-    .pipe(standard.reporter('fail'))
+const run = (command) => new Promise((resolve, reject) => {
+  const [program, ...params] = command.split(' ')
+  const cmd = spawn(program, params, { stdio: 'inherit' })
+  cmd.on('close', resolve)
+  cmd.on('error', reject)
 })
+
+gulp.task('lint', () => run('yarn lint'))
 
 gulp.task('uglify', () => {
   gulp.src(coreFiles)
@@ -47,7 +49,7 @@ gulp.task('uglify', () => {
 
 gulp.task('test', (done) => {
   return new Server({
-    configFile: __dirname + '/karma.conf.js',
+    configFile: join(__dirname, 'karma.conf.js'),
     singleRun: true
   }, () => done()).start()
 })
@@ -66,6 +68,7 @@ gulp.task('plato', done => {
 
 gulp.task('update-readme', (done) => {
   fs.readFile('README.md', 'utf8', (err, file) => {
+    if (err) throw err
     const updateVersion = file.split('\n').reduce((acc, line) => {
       const versionLine = line.includes('//cdn.rawgit.com/fdaciuk/ajax')
       let newLine = line

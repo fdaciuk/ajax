@@ -73,17 +73,17 @@
       var request = ajax().get('http://localhost:3000/api/users/lazy')
       var timer = setTimeout(function () {
         request.abort()
-        expect(true).to.be.ok
+        expect(true).to.be.equal(true)
         done()
       }, 1000)
       request.then(function (response) {
         clearTimeout(timer)
-        expect(false).to.be.ok
+        expect(false).to.be.equal(false)
         done()
       })
     })
 
-    it('Should send back get data',function (done){
+    it('Should send back get data', function (done) {
       var request = ajax().get('http://localhost:3000/api/getdata', {data: 'data'})
       request.then(function (response) {
         expect(response.data).to.be.equal('data')
@@ -91,7 +91,7 @@
       })
     })
 
-    it('Should send back get data even if it already has query string params',function (done){
+    it('Should send back get data even if it already has query string params', function (done) {
       var request = ajax().get('http://localhost:3000/api/getdata?test=1', {data: 'data'})
       request.then(function (response) {
         expect(response.data).to.be.equal('data')
