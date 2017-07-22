@@ -157,13 +157,21 @@ request.get('/users') // get `http://example.com/api/v2/users` url
 
 You may use any of this methods, instead the above approach:
 
-### `get(url)`
+### `get(url, [data])`
 
 > Get data as a JSON object.
 
 ```js
 ajax().get('/api/users')
 ```
+
+You can pass `data` on `get` method, that will be added on URL as query string:
+
+```js
+ajax().get('/api/users', { id: 1 })
+```
+
+It will request on `/api/users?id=1`.
 
 ### `post(url, [data])`
 
