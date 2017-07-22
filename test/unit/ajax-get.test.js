@@ -82,5 +82,13 @@
         done()
       })
     })
+
+    it('Should send back get data',function (done){
+      var request = ajax().get('http://localhost:3000/api/getdata',{data:'data'})
+      request.then(function (response) {
+        expect(response.data).to.be.equal('data')
+        done()
+      })
+    })
   })
 })(window.chai.expect, window.ajax)

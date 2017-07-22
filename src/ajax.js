@@ -40,6 +40,22 @@
     return data || null
   }
 
+  function map(data,call){
+    var d = []
+    for(var key in data){
+      if(data.hasOwnProperty(key)){
+        d.push(call(key,data[key]))
+      }
+    }
+    return d
+  }
+  
+  function serilizeData (data){
+    return map(data,function (key,value){
+      return [key,'=',encodeURIComponent('object' === typeof value ? JSON.stringify(value) : String(value) )].join('')
+    }).join('&')
+  }
+
   function xhrConnection (type, url, data, options) {
     var returnMethods = ['then', 'catch', 'always']
     var promiseMethods = returnMethods.reduce(function (promise, method) {
@@ -50,6 +66,8 @@
       return promise
     }, {})
     var xhr = new XMLHttpRequest()
+    url += ('get' === type.toLowerCase() && data ? (url.indexOf('?') > -1 ? '&' : '?' ) + serilizeData(data) : '')
+    
     xhr.open(type, url, true)
     xhr.withCredentials = options.hasOwnProperty('withCredentials')
     setHeaders(xhr, options.headers)
