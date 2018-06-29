@@ -1,7 +1,7 @@
 {
   "name": "@fdaciuk/ajax",
   "description": "Ajax module in Vanilla JS",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "main": "dist/ajax.min.js",
   "scripts": {
     "test": "concurrently --kill-others --success=first 'node api/index.js' 'karma start --single-run'",
@@ -60,10 +60,8 @@
     "mocha": "^2.4.5",
     "multer": "^1.1.0",
     "plato": "^1.5.0",
-    "standard-format": "^2.1.1"
-  },
-  "dependencies": {
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "standard-format": "^2.1.1"
   }
 }
