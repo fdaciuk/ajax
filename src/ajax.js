@@ -121,18 +121,15 @@
   }
 
   function getQueryString(obj, prefix) {
-    return Object.keys(obj)
-      .map(function(key) {
-        if (obj.hasOwnProperty(key) && undefined !== obj[key]) {
-          var val = obj[key];
-          key = prefix ? prefix + '[' + key + ']' : key;
-          return val !== null && typeof val === 'object' ? getQueryString(val, key) : encode(key) + '=' + encode(val);
-        }
-      })
-      .filter(function(s) {
-        return !!s;
-      })
-      .join('&');
+    return Object.keys(obj).map(function (key) {
+      if (obj.hasOwnProperty(key) && undefined !== obj[key]) {
+        var val = obj[key];
+        key = prefix ? prefix + '[' + key + ']' : key;
+        return val !== null && typeof val === 'object' ? getQueryString(val, key) : encode(key) + '=' + encode(val);
+      }
+    })
+    .filter(Boolean)
+    .join('&');
   }
 
   function encode (value) {
