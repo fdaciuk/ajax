@@ -12,10 +12,12 @@ const users = require('./data/users')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
+const { join } = require('path')
+app.use(express.static(join(__dirname, '../')))
 
 function handleRequest (req, res, next) {
   const userRequested = req.params.slug || req.body.slug
-  let user = userRequested ? users[ userRequested ] : users
+  let user = userRequested ? users[userRequested] : users
   if (!user) {
     res.status(404)
     user = '404 - Not found'
@@ -42,7 +44,12 @@ app.post('/api/formdata', upload.any(), (req, res) => {
 app.post('/api/getheader', (req, res) => {
   res.json({ header: req.get('content-type') })
 })
-app.get('/api/getdata', function (req, res) {
+app.get('/api/getdata', (req, res) => {
   res.json(req.query)
 })
+
+app.put('/api/complex/object', (req, res) => {
+  res.json(req.body)
+})
+
 exports = module.exports = app
