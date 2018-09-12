@@ -17,7 +17,7 @@ You can use this module with _AMD_, _CommonJS_ or just like a method of `window`
 
 ### Bower
 
-You can install via bower:
+You can install via bower (but you should [avoid that](https://bower.io/blog/2017/how-to-migrate-away-from-bower/)):
 
 ```console
 bower install ajax
@@ -136,7 +136,9 @@ ajax({
 })
 ```
 
-If `content-type` is not passed, `application/x-www-form-urlencoded` will be used.
+If `content-type` is not passed, `application/x-www-form-urlencoded` will be used when you pass `data` as a _query string_.
+
+Passing `data` as `object`, `application/json` will be automatically used (_since v2.3.1_).
 
 **Note about uploads:**
 
@@ -189,6 +191,18 @@ var request = ajax({
 request.post('/login', { username: 'user', password: 'b4d45$' })
 ```
 
+`data` might be a complex object, like:
+
+```js
+ajax().post('/api/new-post', {
+  slug: 'my-new-post',
+  meta: {
+    categories: ['js', 'react'],
+    tags: ['code']
+  }
+})
+```
+
 ### `put(url, [data])`
 
 > Update an entire register.
@@ -206,6 +220,9 @@ ajax().delete('/api/users', { id: 1 })
 ```
 
 ## Return methods
+
+> _Disclaimer:_ these _return methods_ are not from **real Promises**, and they will just being called once.
+> If you want to work with real Promises, you should make your own abstraction.
 
 ### `then(response, xhrObject)`
 

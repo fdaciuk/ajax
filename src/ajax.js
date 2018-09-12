@@ -53,9 +53,9 @@
     var featuredUrl = getUrlWithData(url, data, type)
     xhr.open(type, featuredUrl, true)
     xhr.withCredentials = options.hasOwnProperty('withCredentials')
-    setHeaders(xhr, options.headers)
+    setHeaders(xhr, options.headers, data)
     xhr.addEventListener('readystatechange', ready(promiseMethods, xhr), false)
-    xhr.send(objectToQueryString(data))
+    xhr.send(isObject(data) ? JSON.stringify(data) : data)
     promiseMethods.abort = function () {
       return xhr.abort()
     }
@@ -71,10 +71,12 @@
     return url + queryStringSeparator + dataAsQueryString
   }
 
-  function setHeaders (xhr, headers) {
+  function setHeaders (xhr, headers, data) {
     headers = headers || {}
     if (!hasContentType(headers)) {
-      headers['Content-Type'] = 'application/x-www-form-urlencoded'
+      headers['Content-Type'] = isObject(data)
+        ? 'application/json'
+        : 'application/x-www-form-urlencoded'
     }
     Object.keys(headers).forEach(function (name) {
       (headers[name] && xhr.setRequestHeader(name, headers[name]))
