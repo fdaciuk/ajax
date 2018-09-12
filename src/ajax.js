@@ -120,16 +120,16 @@
     return Object.prototype.toString.call(data) === '[object Object]'
   }
 
-  function getQueryString(obj, prefix) {
+  function getQueryString (obj, prefix) {
     return Object.keys(obj).map(function (key) {
       if (obj.hasOwnProperty(key) && undefined !== obj[key]) {
-        var val = obj[key];
-        key = prefix ? prefix + '[' + key + ']' : key;
-        return val !== null && typeof val === 'object' ? getQueryString(val, key) : encode(key) + '=' + encode(val);
+        var val = obj[key]
+        key = prefix ? prefix + '[' + key + ']' : key
+        return val !== null && typeof val === 'object' ? getQueryString(val, key) : encode(key) + '=' + encode(val)
       }
     })
-    .filter(Boolean)
-    .join('&');
+      .filter(Boolean)
+      .join('&')
   }
 
   function encode (value) {
