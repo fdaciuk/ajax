@@ -17,6 +17,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">=6 <=8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fdaciuk/ajax.git"
