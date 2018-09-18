@@ -136,9 +136,7 @@ ajax({
 })
 ```
 
-If `content-type` is not passed, `application/x-www-form-urlencoded` will be used when you pass `data` as a _query string_.
-
-Passing `data` as `object`, `application/json` will be automatically used (_since v2.3.1_).
+If `content-type` is not passed, `application/x-www-form-urlencoded` will be used.
 
 **Note about uploads:**
 
@@ -189,18 +187,6 @@ var request = ajax({
 })
 
 request.post('/login', { username: 'user', password: 'b4d45$' })
-```
-
-`data` might be a complex object, like:
-
-```js
-ajax().post('/api/new-post', {
-  slug: 'my-new-post',
-  meta: {
-    categories: ['js', 'react'],
-    tags: ['code']
-  }
-})
 ```
 
 ### `put(url, [data])`
