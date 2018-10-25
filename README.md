@@ -52,7 +52,7 @@ https://cdnjs.com/libraries/fdaciuk-ajax
 Or you may just add the following line to your HTML file:
 
 ```html
-<script src="//cdn.rawgit.com/fdaciuk/ajax/v3.0.1/dist/ajax.min.js"></script>
+<script src="//cdn.rawgit.com/fdaciuk/ajax/v3.0.4/dist/ajax.min.js"></script>
 ```
 
 ## Usage
