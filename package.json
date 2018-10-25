@@ -1,7 +1,7 @@
 {
   "name": "@fdaciuk/ajax",
   "description": "Ajax module in Vanilla JS",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "main": "dist/ajax.min.js",
   "scripts": {
     "test": "concurrently --kill-others --success=first 'node api/index.js' 'karma start --single-run'",
