@@ -77,7 +77,7 @@ ajax().post(...)
 ### ES6 / ES2015 module
 
 ```js
-import ajax from 'ajax'
+import ajax from '@fdaciuk/ajax'
 ajax().put(...)
 ```
 
